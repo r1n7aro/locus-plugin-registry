@@ -6,6 +6,10 @@
       "id": "com.locus.sample.asset-browser",
       "name": "Asset Browser Tools",
       "summary": "Adds focused asset browsing workflows for Unity projects.",
+      "summaryI18n": {
+        "zh": "为 Unity 项目提供聚焦的资产浏览工作流。",
+        "en": "Adds focused asset browsing workflows for Unity projects."
+      },
       "author": "Locus Test",
       "tags": [
         "asset",
@@ -13,7 +17,7 @@
         "browser"
       ],
       "latestVersion": "0.1.0",
-      "updatedAt": "2026-06-07T22:27:59Z",
+      "updatedAt": "2026-06-08T06:55:00Z",
       "icon": {
         "type": "locus",
         "id": "ScanSearch"
