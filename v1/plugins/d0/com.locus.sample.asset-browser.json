@@ -4,6 +4,10 @@
   "name": "Asset Browser Tools",
   "summary": "Adds focused asset browsing workflows for Unity projects.",
   "description": "Test plugin entry for the Locus Plugin Hub app-store grid. Uses a Locus icon id and downloads from a separate public test repository.",
+  "descriptionSource": {
+    "type": "github",
+    "path": "README.md"
+  },
   "author": "Locus Test",
   "repo": "r1n7aro/locus-plugin-test-asset-browser",
   "license": "MIT",
