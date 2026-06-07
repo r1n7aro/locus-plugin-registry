@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "bucket": "d0",
+  "plugins": [
+    {
+      "id": "com.locus.sample.asset-browser",
+      "name": "Asset Browser Tools",
+      "summary": "Adds focused asset browsing workflows for Unity projects.",
+      "author": "Locus Test",
+      "tags": [
+        "asset",
+        "unity",
+        "browser"
+      ],
+      "latestVersion": "0.1.0",
+      "updatedAt": "2026-06-07T19:49:05Z",
+      "icon": {
+        "type": "locus",
+        "id": "ScanSearch"
+      },
+      "compatibility": {
+        "projectIndependent": true,
+        "minLocusVersion": "0.3.2"
+      }
+    }
+  ]
+}
