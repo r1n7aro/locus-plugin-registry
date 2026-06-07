@@ -3,21 +3,18 @@
   "id": "com.locus.sample.unity-workflow",
   "name": "Unity Workflow Tools",
   "summary": "Provides workflow helpers for repeated Unity editor tasks.",
-  "description": "Test plugin entry for validating external icon URLs, branch switching, and registry detail loading. The package is hosted in a separate public test repository.",
-  "descriptionSource": {
-    "type": "github",
-    "path": "README.md"
+  "summaryI18n": {
+    "zh": "为重复性的 Unity 编辑器任务提供工作流辅助。",
+    "en": "Provides workflow helpers for repeated Unity editor tasks."
   },
   "author": "Locus Test",
-  "repo": "r1n7aro/locus-plugin-test-workflow-tools",
-  "license": "MIT",
   "tags": [
     "workflow",
     "unity",
     "automation"
   ],
   "latestVersion": "0.1.0",
-  "updatedAt": "2026-06-07T22:27:59Z",
+  "updatedAt": "2026-06-08T06:55:00Z",
   "icon": {
     "type": "url",
     "url": "https://raw.githubusercontent.com/r1n7aro/locus-plugin-test-workflow-tools/main/icon.svg"
@@ -25,11 +22,6 @@
   "compatibility": {
     "projectIndependent": true,
     "minLocusVersion": "0.3.2"
-  },
-  "download": {
-    "url": "https://github.com/r1n7aro/locus-plugin-test-workflow-tools/releases/download/v0.1.0/com.locus.sample.unity-workflow-0.1.0.zip",
-    "sha256": "b92b630914861263a36b17664a80ae13bc011ce90674b065d0ce2202ad6232e8",
-    "sizeBytes": 314
   },
   "stats": [
     {
@@ -42,5 +34,39 @@
       "label": "Release downloads",
       "value": 0
     }
-  ]
+  ],
+  "description": "Test plugin entry for validating external icon URLs, branch switching, and registry detail loading. The package is hosted in a separate public test repository.",
+  "descriptionI18n": {
+    "zh": "用于验证外部 icon、多语言详情和注册表详情加载的测试条目，插件包托管在独立公开测试仓库中。",
+    "en": "Test plugin entry for validating external icon URLs, branch switching, and registry detail loading. The package is hosted in a separate public test repository."
+  },
+  "descriptionSource": {
+    "type": "github",
+    "path": "README.md"
+  },
+  "descriptionSourceI18n": {
+    "zh": {
+      "type": "github",
+      "path": "README.zh.md"
+    },
+    "en": {
+      "type": "github",
+      "path": "README.en.md"
+    }
+  },
+  "repo": "r1n7aro/locus-plugin-test-workflow-tools",
+  "license": "MIT",
+  "download": {
+    "url": "https://github.com/r1n7aro/locus-plugin-test-workflow-tools/releases/download/v0.1.0/com.locus.sample.unity-workflow-0.1.0.zip",
+    "sha256": "b92b630914861263a36b17664a80ae13bc011ce90674b065d0ce2202ad6232e8",
+    "sizeBytes": 314
+  },
+  "downloadSource": {
+    "type": "release",
+    "repo": "r1n7aro/locus-plugin-test-workflow-tools",
+    "tag": "v0.1.0",
+    "asset": "com.locus.sample.unity-workflow-0.1.0.zip",
+    "sha256": "b92b630914861263a36b17664a80ae13bc011ce90674b065d0ce2202ad6232e8",
+    "sizeBytes": 314
+  }
 }
