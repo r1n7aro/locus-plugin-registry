@@ -3,21 +3,18 @@
   "id": "com.locus.sample.asset-browser",
   "name": "Asset Browser Tools",
   "summary": "Adds focused asset browsing workflows for Unity projects.",
-  "description": "Test plugin entry for the Locus Plugin Hub app-store grid. Uses a Locus icon id and downloads from a separate public test repository.",
-  "descriptionSource": {
-    "type": "github",
-    "path": "README.md"
+  "summaryI18n": {
+    "zh": "为 Unity 项目提供聚焦的资产浏览工作流。",
+    "en": "Adds focused asset browsing workflows for Unity projects."
   },
   "author": "Locus Test",
-  "repo": "r1n7aro/locus-plugin-test-asset-browser",
-  "license": "MIT",
   "tags": [
     "asset",
     "unity",
     "browser"
   ],
   "latestVersion": "0.1.0",
-  "updatedAt": "2026-06-07T22:27:59Z",
+  "updatedAt": "2026-06-08T06:55:00Z",
   "icon": {
     "type": "locus",
     "id": "ScanSearch"
@@ -25,11 +22,6 @@
   "compatibility": {
     "projectIndependent": true,
     "minLocusVersion": "0.3.2"
-  },
-  "download": {
-    "url": "https://github.com/r1n7aro/locus-plugin-test-asset-browser/releases/download/v0.1.0/com.locus.sample.asset-browser-0.1.0.zip",
-    "sha256": "58520e014d91fdbb521d917d622a3e61a5719e2c79cc5e77a17d012534e5f8a9",
-    "sizeBytes": 312
   },
   "stats": [
     {
@@ -42,5 +34,36 @@
       "label": "Release downloads",
       "value": 0
     }
-  ]
+  ],
+  "description": "Test plugin entry for the Locus Plugin Hub app-store grid. Uses a Locus icon id and downloads from a separate public test repository.",
+  "descriptionI18n": {
+    "zh": "用于 Locus 插件 Hub 的测试条目，验证中文详情、Locus 图标和独立测试仓库下载链路。",
+    "en": "Test plugin entry for the Locus Plugin Hub app-store grid. Uses a Locus icon id and downloads from a separate public test repository."
+  },
+  "descriptionSource": {
+    "type": "github",
+    "path": "README.md"
+  },
+  "descriptionSourceI18n": {
+    "zh": {
+      "type": "github",
+      "path": "README.zh.md"
+    },
+    "en": {
+      "type": "github",
+      "path": "README.en.md"
+    }
+  },
+  "repo": "r1n7aro/locus-plugin-test-asset-browser",
+  "license": "MIT",
+  "download": {
+    "url": "https://github.com/r1n7aro/locus-plugin-test-asset-browser/releases/download/v0.1.0/com.locus.sample.asset-browser-0.1.0.zip",
+    "sha256": "58520e014d91fdbb521d917d622a3e61a5719e2c79cc5e77a17d012534e5f8a9",
+    "sizeBytes": 312
+  },
+  "downloadSource": {
+    "type": "latestRelease",
+    "repo": "r1n7aro/locus-plugin-test-asset-browser",
+    "asset": "com.locus.sample.asset-browser-0.1.0.zip"
+  }
 }
