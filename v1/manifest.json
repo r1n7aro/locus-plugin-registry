@@ -1,10 +1,13 @@
 {
+  "schemaVersion": 1,
   "registryVersion": 1,
-  "bucketCount": 256,
   "bucketStrategy": "sha256-id-prefix-2",
-  "availableBuckets": [],
+  "bucketCount": 256,
+  "availableBuckets": [
+    "40",
+    "d0"
+  ],
   "entryBasePath": "plugins",
   "summaryBasePath": "shards",
-  "updatedAt": "2026-06-07T18:38:59Z",
-  "schemaVersion": 1
+  "updatedAt": "2026-06-07T19:49:05Z"
 }
