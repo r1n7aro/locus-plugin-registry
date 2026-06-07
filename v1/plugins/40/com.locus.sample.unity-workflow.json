@@ -4,6 +4,10 @@
   "name": "Unity Workflow Tools",
   "summary": "Provides workflow helpers for repeated Unity editor tasks.",
   "description": "Test plugin entry for validating external icon URLs, branch switching, and registry detail loading. The package is hosted in a separate public test repository.",
+  "descriptionSource": {
+    "type": "github",
+    "path": "README.md"
+  },
   "author": "Locus Test",
   "repo": "r1n7aro/locus-plugin-test-workflow-tools",
   "license": "MIT",
