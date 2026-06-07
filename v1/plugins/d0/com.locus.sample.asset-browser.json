@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "com.locus.sample.asset-browser",
+  "name": "Asset Browser Tools",
+  "summary": "Adds focused asset browsing workflows for Unity projects.",
+  "description": "Test plugin entry for the Locus Plugin Hub app-store grid. Uses a Locus icon id and downloads from a separate public test repository.",
+  "author": "Locus Test",
+  "repo": "r1n7aro/locus-plugin-test-asset-browser",
+  "license": "MIT",
+  "tags": [
+    "asset",
+    "unity",
+    "browser"
+  ],
+  "latestVersion": "0.1.0",
+  "updatedAt": "2026-06-07T19:49:05Z",
+  "icon": {
+    "type": "locus",
+    "id": "ScanSearch"
+  },
+  "compatibility": {
+    "projectIndependent": true,
+    "minLocusVersion": "0.3.2"
+  },
+  "download": {
+    "url": "https://raw.githubusercontent.com/r1n7aro/locus-plugin-test-asset-browser/main/dist/com.locus.sample.asset-browser-0.1.0.zip",
+    "sha256": "58520e014d91fdbb521d917d622a3e61a5719e2c79cc5e77a17d012534e5f8a9",
+    "sizeBytes": 312
+  }
+}
