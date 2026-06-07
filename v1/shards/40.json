@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "bucket": "40",
+  "plugins": [
+    {
+      "id": "com.locus.sample.unity-workflow",
+      "name": "Unity Workflow Tools",
+      "summary": "Provides workflow helpers for repeated Unity editor tasks.",
+      "author": "Locus Test",
+      "tags": [
+        "workflow",
+        "unity",
+        "automation"
+      ],
+      "latestVersion": "0.1.0",
+      "updatedAt": "2026-06-07T19:49:05Z",
+      "icon": {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/r1n7aro/locus-plugin-test-workflow-tools/main/icon.svg"
+      },
+      "compatibility": {
+        "projectIndependent": true,
+        "minLocusVersion": "0.3.2"
+      }
+    }
+  ]
+}
