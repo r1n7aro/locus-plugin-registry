@@ -17,7 +17,7 @@
     "browser"
   ],
   "latestVersion": "0.1.0",
-  "updatedAt": "2026-06-07T19:49:05Z",
+  "updatedAt": "2026-06-07T22:27:59Z",
   "icon": {
     "type": "locus",
     "id": "ScanSearch"
@@ -27,8 +27,20 @@
     "minLocusVersion": "0.3.2"
   },
   "download": {
-    "url": "https://raw.githubusercontent.com/r1n7aro/locus-plugin-test-asset-browser/main/dist/com.locus.sample.asset-browser-0.1.0.zip",
+    "url": "https://github.com/r1n7aro/locus-plugin-test-asset-browser/releases/download/v0.1.0/com.locus.sample.asset-browser-0.1.0.zip",
     "sha256": "58520e014d91fdbb521d917d622a3e61a5719e2c79cc5e77a17d012534e5f8a9",
     "sizeBytes": 312
-  }
+  },
+  "stats": [
+    {
+      "id": "githubStars",
+      "label": "Stars",
+      "value": 0
+    },
+    {
+      "id": "releaseDownloads",
+      "label": "Release downloads",
+      "value": 0
+    }
+  ]
 }
