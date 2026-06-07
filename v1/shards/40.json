@@ -13,7 +13,7 @@
         "automation"
       ],
       "latestVersion": "0.1.0",
-      "updatedAt": "2026-06-07T19:49:05Z",
+      "updatedAt": "2026-06-07T22:27:59Z",
       "icon": {
         "type": "url",
         "url": "https://raw.githubusercontent.com/r1n7aro/locus-plugin-test-workflow-tools/main/icon.svg"
@@ -21,7 +21,19 @@
       "compatibility": {
         "projectIndependent": true,
         "minLocusVersion": "0.3.2"
-      }
+      },
+      "stats": [
+        {
+          "id": "githubStars",
+          "label": "Stars",
+          "value": 0
+        },
+        {
+          "id": "releaseDownloads",
+          "label": "Release downloads",
+          "value": 0
+        }
+      ]
     }
   ]
 }
