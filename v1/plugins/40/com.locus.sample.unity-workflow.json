@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "com.locus.sample.unity-workflow",
+  "name": "Unity Workflow Tools",
+  "summary": "Provides workflow helpers for repeated Unity editor tasks.",
+  "description": "Test plugin entry for validating external icon URLs, branch switching, and registry detail loading. The package is hosted in a separate public test repository.",
+  "author": "Locus Test",
+  "repo": "r1n7aro/locus-plugin-test-workflow-tools",
+  "license": "MIT",
+  "tags": [
+    "workflow",
+    "unity",
+    "automation"
+  ],
+  "latestVersion": "0.1.0",
+  "updatedAt": "2026-06-07T19:49:05Z",
+  "icon": {
+    "type": "url",
+    "url": "https://raw.githubusercontent.com/r1n7aro/locus-plugin-test-workflow-tools/main/icon.svg"
+  },
+  "compatibility": {
+    "projectIndependent": true,
+    "minLocusVersion": "0.3.2"
+  },
+  "download": {
+    "url": "https://raw.githubusercontent.com/r1n7aro/locus-plugin-test-workflow-tools/main/dist/com.locus.sample.unity-workflow-0.1.0.zip",
+    "sha256": "b92b630914861263a36b17664a80ae13bc011ce90674b065d0ce2202ad6232e8",
+    "sizeBytes": 314
+  }
+}
