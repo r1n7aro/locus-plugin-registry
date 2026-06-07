@@ -36,4 +36,44 @@ Use an external icon URL:
 }
 ```
 
+Detail entries may include `descriptionSource` for rich Markdown detail content. Locus fetches this file only when the user opens the plugin detail window.
+
+Use the plugin repository README:
+
+```json
+{
+  "repo": "owner/plugin-repo",
+  "descriptionSource": {
+    "type": "github",
+    "path": "README.md"
+  }
+}
+```
+
+Use another Markdown file or branch:
+
+```json
+{
+  "descriptionSource": {
+    "type": "github",
+    "repo": "owner/plugin-repo",
+    "branch": "docs",
+    "path": "docs/details.md"
+  }
+}
+```
+
+Use a direct Markdown URL:
+
+```json
+{
+  "descriptionSource": {
+    "type": "url",
+    "url": "https://raw.githubusercontent.com/owner/plugin-repo/main/README.md"
+  }
+}
+```
+
+Markdown image paths can be relative to the Markdown file.
+
 Recommended Locus icon ids include `Puzzle`, `Package`, `Box`, `Grid2X2`, `Workflow`, `Network`, `FileCode2`, and `ScanSearch`.
