@@ -4,10 +4,10 @@
   "bucketStrategy": "sha256-id-prefix-2",
   "bucketCount": 256,
   "availableBuckets": [
-    "40",
-    "d0"
+    "bf",
+    "c0"
   ],
   "entryBasePath": "plugins",
   "summaryBasePath": "shards",
-  "updatedAt": "2026-06-08T09:05:00Z"
+  "updatedAt": "2026-06-08T16:39:43Z"
 }
