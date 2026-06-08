@@ -147,7 +147,7 @@ def select_release_asset(release, source, plugin_id: str):
         return zip_assets[0]
     if len(zip_assets) > 1:
         names = ", ".join(asset.get("name", "") for asset in zip_assets)
-        raise SystemExit(f"Release has multiple zip assets for {plugin_id}; set downloadSource.assetPattern. Assets: {names}")
+        raise SystemExit(f"Release has multiple zip assets for {plugin_id}; set downloadSource.asset or downloadSource.assetPattern. Assets: {names}")
     if len(assets) == 1:
         return assets[0]
     raise SystemExit(f"Release has no selectable plugin archive asset for {plugin_id}")
