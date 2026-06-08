@@ -25,6 +25,9 @@ SUMMARY_KEYS = [
     "updatedAt", "icon", "compatibility", "stats",
 ]
 GITHUB_API = "https://api.github.com"
+LEGACY_ENTRY_KEYS = {"schema", "version", "homepage", "repository", "components"}
+REQUIRED_ENTRY_TEXT_KEYS = ["author", "repo", "license", "summary", "description"]
+REQUIRED_STAT_IDS = {"githubStars", "releaseDownloads"}
 
 
 def utc_now():
@@ -115,6 +118,83 @@ def github_release_url(owner: str, repo: str, tag):
         encoded_tag = urllib.parse.quote(tag, safe="")
         return f"{GITHUB_API}/repos/{owner}/{repo}/releases/tags/{encoded_tag}"
     return f"{GITHUB_API}/repos/{owner}/{repo}/releases/latest"
+
+
+def github_repo_url(owner: str, repo: str):
+    return f"{GITHUB_API}/repos/{owner}/{repo}"
+
+
+def github_releases_url(owner: str, repo: str, page: int):
+    return f"{GITHUB_API}/repos/{owner}/{repo}/releases?per_page=100&page={page}"
+
+
+def entry_github_repo(entry):
+    source = entry.get("downloadSource") or {}
+    repo_value = source_ref(source, "repo") or str(entry.get("repo", "")).strip()
+    if not repo_value:
+        return None
+    return parse_github_repo(repo_value)
+
+
+def fetch_github_release_downloads(owner: str, repo: str):
+    total = 0
+    page = 1
+    while True:
+        releases = fetch_json(github_releases_url(owner, repo, page), f"GitHub releases for {owner}/{repo}")
+        if not isinstance(releases, list) or not releases:
+            break
+        for release in releases:
+            for asset in release.get("assets") or []:
+                total += int(asset.get("download_count") or 0)
+        if len(releases) < 100:
+            break
+        page += 1
+    return total
+
+
+def apply_dynamic_stats(entry):
+    stats = entry.get("stats")
+    if not isinstance(stats, list):
+        return
+    github_repo = entry_github_repo(entry)
+    if not github_repo:
+        return
+    owner, repo = github_repo
+    repo_info = fetch_json(github_repo_url(owner, repo), f"GitHub repo metadata for {entry['id']}")
+    values = {
+        "githubStars": int(repo_info.get("stargazers_count") or 0),
+        "releaseDownloads": fetch_github_release_downloads(owner, repo),
+    }
+    for stat in stats:
+        if isinstance(stat, dict) and stat.get("id") in values:
+            stat["value"] = values[stat["id"]]
+
+
+def validate_entry_metadata(entry, path: Path):
+    legacy = sorted(key for key in LEGACY_ENTRY_KEYS if key in entry)
+    if legacy:
+        raise SystemExit(
+            f"Plugin entry {path} uses legacy registry fields {legacy}; use schemaVersion, repo, author, stats, and downloadSource instead"
+        )
+    for key in REQUIRED_ENTRY_TEXT_KEYS:
+        if not str(entry.get(key, "")).strip():
+            raise SystemExit(f"Plugin entry {path} is missing {key}")
+    stats = entry.get("stats")
+    if not isinstance(stats, list) or not stats:
+        raise SystemExit(f"Plugin entry {path} is missing stats")
+    stat_ids = set()
+    for stat in stats:
+        if not isinstance(stat, dict):
+            raise SystemExit(f"Plugin entry {path} has invalid stats item")
+        stat_id = str(stat.get("id", "")).strip()
+        label = str(stat.get("label", "")).strip()
+        if not stat_id or not label or "value" not in stat:
+            raise SystemExit(f"Plugin entry {path} has incomplete stats item")
+        stat_ids.add(stat_id)
+    missing_stats = sorted(REQUIRED_STAT_IDS - stat_ids)
+    if missing_stats:
+        raise SystemExit(f"Plugin entry {path} is missing required stats {missing_stats}")
+    entry_github_repo(entry)
 
 
 def source_ref(source, *keys):
@@ -244,6 +324,7 @@ def resolve_entry(entry, validate_downloads: bool):
         resolved_entry["downloadSource"] = source
     else:
         validate_static_download(resolved_entry, validate_downloads)
+    apply_dynamic_stats(resolved_entry)
     return resolved_entry
 
 
@@ -262,6 +343,7 @@ def load_entries(validate_downloads: bool):
             raise SystemExit(f"Duplicate plugin id {plugin_id}: {seen[plugin_id]} and {path}")
         if not str(entry.get("name", "")).strip():
             raise SystemExit(f"Plugin entry {path} is missing name")
+        validate_entry_metadata(entry, path)
         entry["id"] = plugin_id
         seen[plugin_id] = path
         entries.append(resolve_entry(entry, validate_downloads))
