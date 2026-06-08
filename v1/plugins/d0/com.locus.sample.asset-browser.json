@@ -2,19 +2,20 @@
   "schemaVersion": 1,
   "id": "com.locus.sample.asset-browser",
   "name": "Asset Browser Tools",
-  "summary": "Adds focused asset browsing workflows for Unity projects.",
+  "summary": "Includes a Hello View and PSD Parser Skill for plugin import testing.",
   "summaryI18n": {
-    "zh": "为 Unity 项目提供聚焦的资产浏览工作流。",
-    "en": "Adds focused asset browsing workflows for Unity projects."
+    "zh": "包含 Hello View 和 PSD Parser Skill，用于测试插件导入。",
+    "en": "Includes a Hello View and PSD Parser Skill for plugin import testing."
   },
   "author": "Locus Test",
   "tags": [
     "asset",
     "unity",
-    "browser"
+    "browser",
+    "import-test"
   ],
-  "latestVersion": "0.1.0",
-  "updatedAt": "2026-06-08T06:55:00Z",
+  "latestVersion": "0.1.1",
+  "updatedAt": "2026-06-08T07:10:00Z",
   "icon": {
     "type": "locus",
     "id": "ScanSearch"
@@ -35,10 +36,10 @@
       "value": 0
     }
   ],
-  "description": "Test plugin entry for the Locus Plugin Hub app-store grid. Uses a Locus icon id and downloads from a separate public test repository.",
+  "description": "Plugin import test entry with a Hello View and PSD Parser Skill. It can be installed from the registry, a release archive, or directly from the repository link.",
   "descriptionI18n": {
-    "zh": "用于 Locus 插件 Hub 的测试条目，验证中文详情、Locus 图标和独立测试仓库下载链路。",
-    "en": "Test plugin entry for the Locus Plugin Hub app-store grid. Uses a Locus icon id and downloads from a separate public test repository."
+    "zh": "插件导入测试条目，包含 Hello View 和 PSD Parser Skill，可从注册表、release 包或仓库链接直接安装。",
+    "en": "Plugin import test entry with a Hello View and PSD Parser Skill. It can be installed from the registry, a release archive, or directly from the repository link."
   },
   "descriptionSource": {
     "type": "github",
@@ -57,13 +58,13 @@
   "repo": "r1n7aro/locus-plugin-test-asset-browser",
   "license": "MIT",
   "download": {
-    "url": "https://github.com/r1n7aro/locus-plugin-test-asset-browser/releases/download/v0.1.0/com.locus.sample.asset-browser-0.1.0.zip",
-    "sha256": "58520e014d91fdbb521d917d622a3e61a5719e2c79cc5e77a17d012534e5f8a9",
-    "sizeBytes": 312
+    "url": "https://github.com/r1n7aro/locus-plugin-test-asset-browser/releases/download/v0.1.1/com.locus.sample.asset-browser-0.1.1.zip",
+    "sha256": "8b4fdb3488b4e515a434deb3519cb01daf9a39d1e41eee2a0a39d3b472803f71",
+    "sizeBytes": 5740
   },
   "downloadSource": {
     "type": "latestRelease",
     "repo": "r1n7aro/locus-plugin-test-asset-browser",
-    "asset": "com.locus.sample.asset-browser-0.1.0.zip"
+    "asset": "com.locus.sample.asset-browser-0.1.1.zip"
   }
 }
