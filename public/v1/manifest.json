@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "registryVersion": 1,
+  "generatedAt": "2026-06-08T17:56:29Z",
+  "entryCount": 0,
+  "bucketStrategy": "sha256-id-prefix-2",
+  "bucketCount": 256,
+  "entryBasePath": "plugins",
+  "summaryBasePath": "shards",
+  "searchIndexPath": "search/summaries.json",
+  "availableBuckets": [],
+  "shards": {}
+}
