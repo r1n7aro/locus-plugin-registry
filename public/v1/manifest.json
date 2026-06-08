@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "registryVersion": 1,
+  "generatedAt": "2026-06-08T17:56:59Z",
+  "entryCount": 2,
+  "bucketStrategy": "sha256-id-prefix-2",
+  "bucketCount": 256,
+  "entryBasePath": "plugins",
+  "summaryBasePath": "shards",
+  "searchIndexPath": "search/summaries.json",
+  "availableBuckets": [
+    "bf",
+    "c0"
+  ],
+  "shards": {
+    "bf": {
+      "count": 1,
+      "sha256": "48689322842f0fc723b8b8dbadd37695a2f897ffe928e68631928b342e444860"
+    },
+    "c0": {
+      "count": 1,
+      "sha256": "0fa3b603783794d5575147acfc6597b2a4b7acce72a562e333948bfb16010567"
+    }
+  }
+}
