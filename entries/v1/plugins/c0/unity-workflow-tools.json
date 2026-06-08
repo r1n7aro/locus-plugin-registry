@@ -13,8 +13,6 @@
     "unity",
     "automation"
   ],
-  "latestVersion": "0.1.1",
-  "updatedAt": "2026-06-08T18:23:28Z",
   "icon": {
     "type": "url",
     "url": "https://raw.githubusercontent.com/r1n7aro/locus-plugin-test-workflow-tools/main/icon.svg"
@@ -56,11 +54,6 @@
   },
   "repo": "r1n7aro/locus-plugin-test-workflow-tools",
   "license": "MIT",
-  "download": {
-    "url": "https://github.com/r1n7aro/locus-plugin-test-workflow-tools/releases/download/v0.1.1/unity-workflow-tools.zip",
-    "sha256": "3165b2dbed140d51525b139a2f16b697170858080f617b100575009815fa5fc5",
-    "sizeBytes": 3784
-  },
   "downloadSource": {
     "type": "latestRelease",
     "repo": "r1n7aro/locus-plugin-test-workflow-tools",

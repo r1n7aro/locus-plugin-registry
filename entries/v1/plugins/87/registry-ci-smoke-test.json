@@ -13,8 +13,6 @@
     "ci",
     "smoke-test"
   ],
-  "latestVersion": "0.0.1",
-  "updatedAt": "2026-06-08T18:12:17Z",
   "icon": {
     "type": "locus",
     "id": "PackageCheck"
@@ -46,11 +44,6 @@
   },
   "repo": "r1n7aro/locus-plugin-test-registry-ci",
   "license": "MIT",
-  "download": {
-    "url": "https://github.com/r1n7aro/locus-plugin-test-registry-ci/releases/download/v0.0.1/registry-ci-smoke-test.zip",
-    "sha256": "c21b0ad0a4ca7e5c1b10e1275d301cba907ba7a1248f86439abd5d9dcbcf1108",
-    "sizeBytes": 586
-  },
   "downloadSource": {
     "type": "latestRelease",
     "repo": "r1n7aro/locus-plugin-test-registry-ci",
