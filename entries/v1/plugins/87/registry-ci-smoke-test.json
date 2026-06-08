@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "id": "registry-ci-smoke-test",
+  "name": "Registry CI Smoke Test",
+  "summary": "Minimal plugin used to validate registry PR checks and generated indexes.",
+  "summaryI18n": {
+    "zh": "用于验证注册表 PR 校验与索引生成的最小插件。",
+    "en": "Minimal plugin used to validate registry PR checks and generated indexes."
+  },
+  "author": "Locus Test",
+  "tags": [
+    "registry",
+    "ci",
+    "smoke-test"
+  ],
+  "latestVersion": "0.0.1",
+  "updatedAt": "2026-06-08T18:12:17Z",
+  "icon": {
+    "type": "locus",
+    "id": "PackageCheck"
+  },
+  "compatibility": {
+    "projectIndependent": true,
+    "minLocusVersion": "0.3.2"
+  },
+  "stats": [
+    {
+      "id": "githubStars",
+      "label": "Stars",
+      "value": 0
+    },
+    {
+      "id": "releaseDownloads",
+      "label": "Release downloads",
+      "value": 0
+    }
+  ],
+  "description": "Smoke test plugin for validating the Locus registry source-entry PR workflow, release archive verification, and generated public manifest, shard, entry, and search indexes.",
+  "descriptionI18n": {
+    "zh": "用于验证 Locus 注册表原始条目 PR、release 归档校验，以及 public manifest、shard、entry、search 索引生成的 smoke test 插件。",
+    "en": "Smoke test plugin for validating the Locus registry source-entry PR workflow, release archive verification, and generated public manifest, shard, entry, and search indexes."
+  },
+  "descriptionSource": {
+    "type": "github",
+    "path": "README.md"
+  },
+  "repo": "r1n7aro/locus-plugin-test-registry-ci",
+  "license": "MIT",
+  "download": {
+    "url": "https://github.com/r1n7aro/locus-plugin-test-registry-ci/releases/download/v0.0.1/registry-ci-smoke-test.zip",
+    "sha256": "c21b0ad0a4ca7e5c1b10e1275d301cba907ba7a1248f86439abd5d9dcbcf1108",
+    "sizeBytes": 586
+  },
+  "downloadSource": {
+    "type": "latestRelease",
+    "repo": "r1n7aro/locus-plugin-test-registry-ci",
+    "asset": "registry-ci-smoke-test.zip"
+  }
+}
