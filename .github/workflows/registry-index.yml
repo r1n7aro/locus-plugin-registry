@@ -1,0 +1,59 @@
+name: Registry Index
+
+on:
+  pull_request:
+    paths:
+      - "entries/**"
+      - "scripts/registry_index.py"
+      - ".github/workflows/registry-index.yml"
+  push:
+    branches:
+      - main
+      - test
+    paths:
+      - "entries/**"
+      - "scripts/registry_index.py"
+      - ".github/workflows/registry-index.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reject generated index edits in PR
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch origin "${{ github.base_ref }}" --depth=1
+          changed="$(git diff --name-only "origin/${{ github.base_ref }}"...HEAD)"
+          echo "$changed"
+          if echo "$changed" | grep -E '^(public/|v1/)'; then
+            echo "Registration PRs must modify entries/ only; public/ is generated."
+            exit 1
+          fi
+      - name: Validate entries
+        run: python scripts/registry_index.py --validate-downloads --validate-only
+
+  build-index:
+    if: github.event_name == 'push'
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build public index
+        run: python scripts/registry_index.py --validate-downloads
+      - name: Commit generated index
+        run: |
+          if git diff --quiet -- public/v1; then
+            echo "Generated index is up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/v1
+          git commit -m "Generate registry index"
+          git push
