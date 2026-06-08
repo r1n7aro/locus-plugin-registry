@@ -5,9 +5,10 @@
   "bucketCount": 256,
   "availableBuckets": [
     "40",
+    "67",
     "d0"
   ],
   "entryBasePath": "plugins",
   "summaryBasePath": "shards",
-  "updatedAt": "2026-06-08T09:05:00Z"
+  "updatedAt": "2026-06-08T15:45:00Z"
 }
