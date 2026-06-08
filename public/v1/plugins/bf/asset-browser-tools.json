@@ -14,8 +14,8 @@
     "browser",
     "import-test"
   ],
-  "latestVersion": "0.1.1",
-  "updatedAt": "2026-06-08T16:39:43Z",
+  "latestVersion": "0.1.2",
+  "updatedAt": "2026-06-08T18:21:11Z",
   "icon": {
     "type": "locus",
     "id": "ScanSearch"
@@ -58,9 +58,9 @@
   "repo": "r1n7aro/locus-plugin-test-asset-browser",
   "license": "MIT",
   "download": {
-    "url": "https://github.com/r1n7aro/locus-plugin-test-asset-browser/releases/download/v0.1.1/asset-browser-tools.zip",
-    "sha256": "ea7015e30a4fba8e48c40a7977a8d853e3d20b2b5e8ba80ab68ba173c5a8e126",
-    "sizeBytes": 6286
+    "url": "https://github.com/r1n7aro/locus-plugin-test-asset-browser/releases/download/v0.1.2/asset-browser-tools.zip",
+    "sha256": "73e297b1de363b69f0561650b94720a5f167eed1e59ad07f32cbd6c1d75f1185",
+    "sizeBytes": 6325
   },
   "downloadSource": {
     "type": "latestRelease",
