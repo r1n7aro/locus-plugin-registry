@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-08T17:56:59Z",
+  "generatedAt": "2026-06-08T18:13:34Z",
   "plugins": [
     {
       "id": "asset-browser-tools",
@@ -22,6 +22,43 @@
       "icon": {
         "type": "locus",
         "id": "ScanSearch"
+      },
+      "compatibility": {
+        "projectIndependent": true,
+        "minLocusVersion": "0.3.2"
+      },
+      "stats": [
+        {
+          "id": "githubStars",
+          "label": "Stars",
+          "value": 0
+        },
+        {
+          "id": "releaseDownloads",
+          "label": "Release downloads",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "registry-ci-smoke-test",
+      "name": "Registry CI Smoke Test",
+      "summary": "Minimal plugin used to validate registry PR checks and generated indexes.",
+      "summaryI18n": {
+        "zh": "用于验证注册表 PR 校验与索引生成的最小插件。",
+        "en": "Minimal plugin used to validate registry PR checks and generated indexes."
+      },
+      "author": "Locus Test",
+      "tags": [
+        "registry",
+        "ci",
+        "smoke-test"
+      ],
+      "latestVersion": "0.0.1",
+      "updatedAt": "2026-06-08T18:12:17Z",
+      "icon": {
+        "type": "locus",
+        "id": "PackageCheck"
       },
       "compatibility": {
         "projectIndependent": true,
