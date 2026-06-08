@@ -6,15 +6,37 @@
       "id": "bye-bye-view",
       "name": "Bye Bye View",
       "summary": "A tiny Bye Bye panel for Locus View plugin publishing tests.",
+      "summaryI18n": {
+        "zh": "用于 Locus View 插件发布测试的简洁 Bye Bye 面板。",
+        "en": "A tiny Bye Bye panel for Locus View plugin publishing tests."
+      },
+      "author": "r1n7aro",
       "tags": [
         "view",
         "sample"
       ],
       "latestVersion": "0.1.0",
       "updatedAt": "2026-06-08T20:18:45Z",
+      "icon": {
+        "type": "locus",
+        "id": "Package"
+      },
       "compatibility": {
-        "projectIndependent": true
-      }
+        "projectIndependent": true,
+        "minLocusVersion": "0.3.2"
+      },
+      "stats": [
+        {
+          "id": "githubStars",
+          "label": "Stars",
+          "value": 0
+        },
+        {
+          "id": "releaseDownloads",
+          "label": "Release downloads",
+          "value": 5
+        }
+      ]
     }
   ]
 }
