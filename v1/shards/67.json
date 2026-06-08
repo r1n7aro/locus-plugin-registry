@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "bucket": "67",
+  "plugins": [
+    {
+      "id": "com.r1n7aro.locus-workspace",
+      "name": "Locus Workspace",
+      "summary": "Canvas workspace for organizing Unity assets and scene references inside Locus.",
+      "summaryI18n": {
+        "zh": "在 Locus 中用画布整理 Unity 资源和场景引用。",
+        "en": "Canvas workspace for organizing Unity assets and scene references inside Locus."
+      },
+      "author": "r1n7aro",
+      "tags": [
+        "workspace",
+        "unity",
+        "assets",
+        "canvas"
+      ],
+      "latestVersion": "0.1.0",
+      "updatedAt": "2026-06-08T16:16:55Z",
+      "icon": {
+        "type": "lucide",
+        "name": "Grid2X2"
+      },
+      "compatibility": {
+        "projectIndependent": true,
+        "minLocusVersion": "0.3.2"
+      },
+      "stats": [
+        {
+          "id": "githubStars",
+          "label": "Stars",
+          "value": 0
+        },
+        {
+          "id": "releaseDownloads",
+          "label": "Release downloads",
+          "value": 0
+        }
+      ]
+    }
+  ]
+}
