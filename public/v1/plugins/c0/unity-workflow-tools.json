@@ -30,7 +30,7 @@
     {
       "id": "releaseDownloads",
       "label": "Release downloads",
-      "value": 29
+      "value": 32
     }
   ],
   "description": "Test plugin entry for validating external icon URLs, branch switching, and registry detail loading. The package is hosted in a separate public test repository.",

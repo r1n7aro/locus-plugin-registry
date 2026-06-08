@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-08T20:33:01Z",
+  "generatedAt": "2026-06-08T21:40:55Z",
   "plugins": [
     {
       "id": "asset-browser-tools",
@@ -36,7 +36,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 32
+          "value": 35
         }
       ]
     },
@@ -72,7 +72,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 5
+          "value": 8
         }
       ]
     },
@@ -110,7 +110,44 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 14
+          "value": 16
+        }
+      ]
+    },
+    {
+      "id": "meow-agent-style",
+      "name": "Meow Agent Style",
+      "summary": "Make the agent end final user-facing replies with `喵`.",
+      "summaryI18n": {
+        "zh": "让 agent 的最终可见回复以「喵」结尾。",
+        "en": "Make the agent end final user-facing replies with `喵`."
+      },
+      "author": "r1n7aro",
+      "tags": [
+        "skill",
+        "agent-style",
+        "fun"
+      ],
+      "latestVersion": "0.1.0",
+      "updatedAt": "2026-06-08T21:26:26Z",
+      "icon": {
+        "type": "locus",
+        "id": "Cat"
+      },
+      "compatibility": {
+        "projectIndependent": true,
+        "minLocusVersion": "0.3.2"
+      },
+      "stats": [
+        {
+          "id": "githubStars",
+          "label": "Stars",
+          "value": 0
+        },
+        {
+          "id": "releaseDownloads",
+          "label": "Release downloads",
+          "value": 2
         }
       ]
     },
@@ -147,7 +184,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 24
+          "value": 27
         }
       ]
     },
@@ -184,7 +221,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 29
+          "value": 32
         }
       ]
     }

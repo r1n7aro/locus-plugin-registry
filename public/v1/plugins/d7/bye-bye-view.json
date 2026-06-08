@@ -29,7 +29,7 @@
     {
       "id": "releaseDownloads",
       "label": "Release downloads",
-      "value": 5
+      "value": 8
     }
   ],
   "description": "Bye Bye View provides a compact Locus View that displays a simple goodbye panel. It is intended as a minimal plugin publishing and registry validation sample.",

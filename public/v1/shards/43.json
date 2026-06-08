@@ -1,27 +1,26 @@
 {
   "schemaVersion": 1,
-  "bucket": "e1",
+  "bucket": "43",
   "plugins": [
     {
-      "id": "locus-workspace",
-      "name": "Locus Workspace",
-      "summary": "Canvas workspace for organizing Unity assets and scene references inside Locus.",
+      "id": "meow-agent-style",
+      "name": "Meow Agent Style",
+      "summary": "Make the agent end final user-facing replies with `喵`.",
       "summaryI18n": {
-        "zh": "用于在 Locus 中整理 Unity 资产和场景引用的画布工作区。",
-        "en": "Canvas workspace for organizing Unity assets and scene references inside Locus."
+        "zh": "让 agent 的最终可见回复以「喵」结尾。",
+        "en": "Make the agent end final user-facing replies with `喵`."
       },
       "author": "r1n7aro",
       "tags": [
-        "workspace",
-        "unity",
-        "assets",
-        "view"
+        "skill",
+        "agent-style",
+        "fun"
       ],
       "latestVersion": "0.1.0",
-      "updatedAt": "2026-06-08T18:54:48Z",
+      "updatedAt": "2026-06-08T21:26:26Z",
       "icon": {
         "type": "locus",
-        "id": "Grid2X2"
+        "id": "Cat"
       },
       "compatibility": {
         "projectIndependent": true,
@@ -36,7 +35,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 16
+          "value": 2
         }
       ]
     }
