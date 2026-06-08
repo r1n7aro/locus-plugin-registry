@@ -14,8 +14,6 @@
     "assets",
     "view"
   ],
-  "latestVersion": "0.1.0",
-  "updatedAt": "2026-06-08T18:56:38Z",
   "icon": {
     "type": "locus",
     "id": "Grid2X2"
@@ -47,14 +45,9 @@
   },
   "repo": "r1n7aro/locus-workspace",
   "license": "MIT",
-  "download": {
-    "url": "https://github.com/r1n7aro/locus-workspace/releases/download/v0.1.0/locus-workspace-0.1.0.zip",
-    "sha256": "fd6c2405a19b8d321a1d43e15343b758e726138cfae13ffde8112862e6e2de32",
-    "sizeBytes": 9230
-  },
   "downloadSource": {
     "type": "latestRelease",
     "repo": "r1n7aro/locus-workspace",
-    "asset": "locus-workspace-0.1.0.zip"
+    "assetPattern": "locus-workspace-*.zip"
   }
 }
