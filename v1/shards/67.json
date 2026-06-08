@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "bucket": "67",
+  "plugins": [
+    {
+      "id": "com.r1n7aro.locus-workspace",
+      "name": "Locus Workspace",
+      "summary": "Canvas workspace for organizing Unity asset and scene references.",
+      "summaryI18n": {
+        "zh": "用于组织 Unity 资源和场景引用的画布工作区。",
+        "en": "Canvas workspace for organizing Unity asset and scene references."
+      },
+      "author": "r1n7aro",
+      "tags": [
+        "workspace",
+        "unity",
+        "view",
+        "assets"
+      ],
+      "latestVersion": "0.1.0",
+      "updatedAt": "2026-06-08T15:45:00Z",
+      "compatibility": {
+        "projectIndependent": true,
+        "minLocusVersion": "0.3.2"
+      },
+      "stats": [
+        {
+          "id": "githubStars",
+          "label": "Stars",
+          "value": 0
+        },
+        {
+          "id": "releaseDownloads",
+          "label": "Release downloads",
+          "value": 0
+        }
+      ]
+    }
+  ]
+}
