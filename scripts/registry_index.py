@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 import argparse
+import copy
 import filecmp
+import fnmatch
 import hashlib
+import io
 import json
+import os
 import re
 import shutil
-import sys
 import tempfile
+import urllib.error
+import urllib.parse
 import urllib.request
 import zipfile
 from datetime import datetime, timezone
@@ -19,6 +24,11 @@ SUMMARY_KEYS = [
     "id", "name", "summary", "summaryI18n", "author", "tags", "latestVersion",
     "updatedAt", "icon", "compatibility", "stats",
 ]
+GITHUB_API = "https://api.github.com"
+
+
+def utc_now():
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 def bucket(plugin_id: str) -> str:
@@ -45,7 +55,199 @@ def iter_entry_files():
     return sorted(path for path in ENTRY_ROOT.glob("*/*.json") if path.is_file())
 
 
-def load_entries():
+def normalize_source_kind(value: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", str(value or "").strip().lower())
+
+
+def source_has_value(source) -> bool:
+    if not isinstance(source, dict):
+        return False
+    keys = [
+        "type", "input", "url", "repo", "ref", "branch", "tag", "commit",
+        "asset", "assetPattern", "asset_pattern", "sha256", "version",
+    ]
+    return any(str(source.get(key, "")).strip() for key in keys) or source.get("sizeBytes") is not None
+
+
+def github_headers():
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+        "User-Agent": "Locus-Plugin-Registry-CI",
+    }
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    return headers
+
+
+def fetch_bytes(url: str, label: str) -> bytes:
+    request = urllib.request.Request(url, headers=github_headers())
+    try:
+        with urllib.request.urlopen(request, timeout=90) as response:
+            return response.read()
+    except urllib.error.HTTPError as error:
+        detail = error.read().decode("utf-8", errors="replace")[:400]
+        raise SystemExit(f"Failed to fetch {label}: HTTP {error.code} {detail}")
+    except urllib.error.URLError as error:
+        raise SystemExit(f"Failed to fetch {label}: {error}")
+
+
+def fetch_json(url: str, label: str):
+    return json.loads(fetch_bytes(url, label).decode("utf-8-sig"))
+
+
+def parse_github_repo(value: str) -> tuple[str, str]:
+    raw = str(value or "").strip().removesuffix(".git").strip("/")
+    if raw.startswith("https://") or raw.startswith("http://"):
+        parsed = urllib.parse.urlparse(raw)
+        if parsed.netloc.lower() != "github.com":
+            raise SystemExit(f"GitHub downloadSource repo must use github.com: {value}")
+        raw = parsed.path.strip("/").removesuffix(".git")
+    parts = [part for part in raw.split("/") if part]
+    if len(parts) != 2:
+        raise SystemExit(f"GitHub downloadSource repo must be owner/repo: {value}")
+    return parts[0], parts[1]
+
+
+def github_release_url(owner: str, repo: str, tag):
+    if tag:
+        encoded_tag = urllib.parse.quote(tag, safe="")
+        return f"{GITHUB_API}/repos/{owner}/{repo}/releases/tags/{encoded_tag}"
+    return f"{GITHUB_API}/repos/{owner}/{repo}/releases/latest"
+
+
+def source_ref(source, *keys):
+    for key in keys:
+        value = str(source.get(key, "")).strip()
+        if value:
+            return value
+    return ""
+
+
+def select_release_asset(release, source, plugin_id: str):
+    assets = release.get("assets") or []
+    exact = source_ref(source, "asset")
+    pattern = source_ref(source, "assetPattern", "asset_pattern")
+    if exact:
+        for asset in assets:
+            if asset.get("name") == exact:
+                return asset
+        raise SystemExit(f"Release asset not found for {plugin_id}: {exact}")
+    if pattern:
+        matches = [asset for asset in assets if fnmatch.fnmatchcase(str(asset.get("name", "")), pattern)]
+        if len(matches) == 1:
+            return matches[0]
+        if len(matches) > 1:
+            names = ", ".join(asset.get("name", "") for asset in matches)
+            raise SystemExit(f"Release asset pattern is ambiguous for {plugin_id}: {pattern} matched {names}")
+        raise SystemExit(f"Release asset pattern matched no assets for {plugin_id}: {pattern}")
+    zip_assets = [asset for asset in assets if str(asset.get("name", "")).lower().endswith(".zip")]
+    if len(zip_assets) == 1:
+        return zip_assets[0]
+    if len(zip_assets) > 1:
+        names = ", ".join(asset.get("name", "") for asset in zip_assets)
+        raise SystemExit(f"Release has multiple zip assets for {plugin_id}; set downloadSource.assetPattern. Assets: {names}")
+    if len(assets) == 1:
+        return assets[0]
+    raise SystemExit(f"Release has no selectable plugin archive asset for {plugin_id}")
+
+
+def inspect_archive(entry, data: bytes, label: str):
+    digest = hashlib.sha256(data).hexdigest()
+    try:
+        with zipfile.ZipFile(io.BytesIO(data)) as archive:
+            manifest = json.loads(archive.read("locus.plugin.json").decode("utf-8-sig"))
+    except KeyError:
+        raise SystemExit(f"Archive for {entry['id']} is missing root locus.plugin.json: {label}")
+    except zipfile.BadZipFile:
+        raise SystemExit(f"Archive for {entry['id']} is not a valid zip: {label}")
+    if manifest.get("id") != entry["id"]:
+        raise SystemExit(f"Archive id mismatch for {entry['id']}: {manifest.get('id')}")
+    version = str(manifest.get("version", "")).strip()
+    if not version:
+        raise SystemExit(f"Archive for {entry['id']} is missing manifest version")
+    return {"sha256": digest, "sizeBytes": len(data), "version": version}
+
+
+def resolve_download_source(entry):
+    source = entry.get("downloadSource") or {}
+    kind = normalize_source_kind(source.get("type"))
+    plugin_id = entry["id"]
+    if kind in {"latestrelease", "githublatestrelease", "release", "releasetag", "githubrelease"}:
+        repo_value = source_ref(source, "repo") or str(entry.get("repo", "")).strip()
+        owner, repo = parse_github_repo(repo_value)
+        tag = None
+        if kind in {"release", "releasetag", "githubrelease"}:
+            tag = source_ref(source, "tag", "ref")
+            if not tag:
+                raise SystemExit(f"downloadSource release tag is required for {plugin_id}")
+        release = fetch_json(github_release_url(owner, repo, tag), f"GitHub release metadata for {plugin_id}")
+        asset = select_release_asset(release, source, plugin_id)
+        url = str(asset.get("browser_download_url", "")).strip()
+        if not url:
+            raise SystemExit(f"Release asset for {plugin_id} has no download URL")
+        data = fetch_bytes(url, f"plugin archive for {plugin_id}")
+        resolved = inspect_archive(entry, data, url)
+        resolved["url"] = url
+        resolved["updatedAt"] = release.get("published_at") or release.get("created_at") or utc_now()
+        return resolved
+    if kind in {"url", "archive", "zip"}:
+        url = source_ref(source, "url", "input")
+        if not url:
+            raise SystemExit(f"downloadSource url is required for {plugin_id}")
+        data = fetch_bytes(url, f"plugin archive for {plugin_id}")
+        resolved = inspect_archive(entry, data, url)
+        resolved["url"] = url
+        resolved["updatedAt"] = utc_now()
+        return resolved
+    raise SystemExit(f"Unsupported downloadSource type for {plugin_id}: {source.get('type')!r}")
+
+
+def validate_static_download(entry, validate_downloads: bool):
+    download = entry.get("download") or {}
+    url = str(download.get("url", "")).strip()
+    sha256 = str(download.get("sha256", "")).strip().lower()
+    latest = str(entry.get("latestVersion", "")).strip()
+    if not latest:
+        raise SystemExit(f"Plugin entry for {entry['id']} is missing latestVersion")
+    if not url:
+        raise SystemExit(f"Plugin entry for {entry['id']} is missing download.url")
+    if not sha256:
+        raise SystemExit(f"Plugin entry for {entry['id']} is missing download.sha256")
+    if not validate_downloads:
+        return
+    data = fetch_bytes(url, f"plugin archive for {entry['id']}")
+    resolved = inspect_archive(entry, data, url)
+    if resolved["sha256"] != sha256:
+        raise SystemExit(f"Download sha256 mismatch for {entry['id']}: {resolved['sha256']}")
+    size = download.get("sizeBytes")
+    if size is not None and int(size) != resolved["sizeBytes"]:
+        raise SystemExit(f"Download size mismatch for {entry['id']}: {resolved['sizeBytes']}")
+    if resolved["version"] != latest:
+        raise SystemExit(f"Archive version mismatch for {entry['id']}: {resolved['version']}")
+
+
+def resolve_entry(entry, validate_downloads: bool):
+    resolved_entry = copy.deepcopy(entry)
+    source = resolved_entry.get("downloadSource") or {}
+    if source_has_value(source):
+        resolved = resolve_download_source(resolved_entry)
+        resolved_entry["latestVersion"] = resolved["version"]
+        resolved_entry["updatedAt"] = resolved.get("updatedAt") or resolved_entry.get("updatedAt") or utc_now()
+        resolved_entry["download"] = {
+            "url": resolved["url"],
+            "sha256": resolved["sha256"],
+            "sizeBytes": resolved["sizeBytes"],
+        }
+        source["version"] = resolved["version"]
+        resolved_entry["downloadSource"] = source
+    else:
+        validate_static_download(resolved_entry, validate_downloads)
+    return resolved_entry
+
+
+def load_entries(validate_downloads: bool):
     entries = []
     seen = {}
     for path in iter_entry_files():
@@ -60,39 +262,11 @@ def load_entries():
             raise SystemExit(f"Duplicate plugin id {plugin_id}: {seen[plugin_id]} and {path}")
         if not str(entry.get("name", "")).strip():
             raise SystemExit(f"Plugin entry {path} is missing name")
-        if not str(entry.get("latestVersion", "")).strip():
-            raise SystemExit(f"Plugin entry {path} is missing latestVersion")
-        download = entry.get("download") or {}
-        if not str(download.get("url", "")).strip():
-            raise SystemExit(f"Plugin entry {path} is missing download.url")
-        if not str(download.get("sha256", "")).strip():
-            raise SystemExit(f"Plugin entry {path} is missing download.sha256")
+        entry["id"] = plugin_id
         seen[plugin_id] = path
-        entries.append(entry)
+        entries.append(resolve_entry(entry, validate_downloads))
     entries.sort(key=lambda item: item["id"])
     return entries
-
-
-def validate_download(entry):
-    download = entry.get("download") or {}
-    url = download.get("url", "")
-    with urllib.request.urlopen(url, timeout=60) as response:
-        data = response.read()
-    digest = hashlib.sha256(data).hexdigest()
-    if digest != str(download.get("sha256", "")).lower():
-        raise SystemExit(f"Download sha256 mismatch for {entry['id']}: {digest}")
-    size = download.get("sizeBytes")
-    if size is not None and int(size) != len(data):
-        raise SystemExit(f"Download size mismatch for {entry['id']}: {len(data)}")
-    with tempfile.NamedTemporaryFile(suffix=".zip") as handle:
-        handle.write(data)
-        handle.flush()
-        with zipfile.ZipFile(handle.name) as archive:
-            manifest = json.loads(archive.read("locus.plugin.json").decode("utf-8-sig"))
-    if manifest.get("id") != entry["id"]:
-        raise SystemExit(f"Archive id mismatch for {entry['id']}: {manifest.get('id')}")
-    if manifest.get("version") != entry.get("latestVersion"):
-        raise SystemExit(f"Archive version mismatch for {entry['id']}: {manifest.get('version')}")
 
 
 def build_index(entries, output_root=PUBLIC_ROOT):
@@ -121,7 +295,7 @@ def build_index(entries, output_root=PUBLIC_ROOT):
 
     summaries = {
         "schemaVersion": 1,
-        "generatedAt": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        "generatedAt": utc_now(),
         "plugins": [summary_from_entry(entry) for entry in entries],
     }
     write_json(output_root / "search" / "summaries.json", summaries)
@@ -155,10 +329,7 @@ def main():
     parser.add_argument("--validate-only", action="store_true")
     args = parser.parse_args()
 
-    entries = load_entries()
-    if args.validate_downloads:
-        for entry in entries:
-            validate_download(entry)
+    entries = load_entries(args.validate_downloads)
     if args.validate_only:
         return
     if args.check:
@@ -173,3 +344,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
