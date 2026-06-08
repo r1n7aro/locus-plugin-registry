@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "locus-workspace",
+  "name": "Locus Workspace",
+  "summary": "Canvas workspace for organizing Unity assets and scene references inside Locus.",
+  "summaryI18n": {
+    "zh": "用于在 Locus 中整理 Unity 资产和场景引用的画布工作区。",
+    "en": "Canvas workspace for organizing Unity assets and scene references inside Locus."
+  },
+  "author": "r1n7aro",
+  "tags": [
+    "workspace",
+    "unity",
+    "assets",
+    "view"
+  ],
+  "latestVersion": "0.1.0",
+  "updatedAt": "2026-06-08T18:56:38Z",
+  "icon": {
+    "type": "locus",
+    "id": "Grid2X2"
+  },
+  "compatibility": {
+    "projectIndependent": true,
+    "minLocusVersion": "0.3.2"
+  },
+  "stats": [
+    {
+      "id": "githubStars",
+      "label": "Stars",
+      "value": 0
+    },
+    {
+      "id": "releaseDownloads",
+      "label": "Release downloads",
+      "value": 0
+    }
+  ],
+  "description": "Locus Workspace provides a canvas View for arranging Unity assets and scene references into pages. Drag assets from Unity into the canvas, search project assets from the View, and select or inspect saved references from Locus.",
+  "descriptionI18n": {
+    "zh": "Locus Workspace 提供一个画布 View，用于把 Unity 资产和场景引用按页面整理。可以从 Unity 拖入资产，在 View 内搜索项目资产，并从 Locus 选择或检查已保存的引用。",
+    "en": "Locus Workspace provides a canvas View for arranging Unity assets and scene references into pages. Drag assets from Unity into the canvas, search project assets from the View, and select or inspect saved references from Locus."
+  },
+  "descriptionSource": {
+    "type": "github",
+    "path": "README.md"
+  },
+  "repo": "r1n7aro/locus-workspace",
+  "license": "MIT",
+  "download": {
+    "url": "https://github.com/r1n7aro/locus-workspace/releases/download/v0.1.0/locus-workspace-0.1.0.zip",
+    "sha256": "fd6c2405a19b8d321a1d43e15343b758e726138cfae13ffde8112862e6e2de32",
+    "sizeBytes": 9230
+  },
+  "downloadSource": {
+    "type": "latestRelease",
+    "repo": "r1n7aro/locus-workspace",
+    "asset": "locus-workspace-0.1.0.zip"
+  }
+}
