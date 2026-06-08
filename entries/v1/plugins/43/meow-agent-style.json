@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "meow-agent-style",
+  "name": "Meow Agent Style",
+  "summary": "Make the agent end final user-facing replies with `喵`.",
+  "summaryI18n": {
+    "zh": "让 agent 的最终可见回复以「喵」结尾。",
+    "en": "Make the agent end final user-facing replies with `喵`."
+  },
+  "author": "r1n7aro",
+  "tags": [
+    "skill",
+    "agent-style",
+    "fun"
+  ],
+  "icon": {
+    "type": "locus",
+    "id": "Cat"
+  },
+  "compatibility": {
+    "projectIndependent": true,
+    "minLocusVersion": "0.3.2"
+  },
+  "stats": [
+    {
+      "id": "githubStars",
+      "label": "Stars",
+      "value": 0
+    },
+    {
+      "id": "releaseDownloads",
+      "label": "Release downloads",
+      "value": 0
+    }
+  ],
+  "description": "Meow Agent Style provides a small Locus Skill, /meow-agent-style, that asks the agent to preserve the user's requested language and normal answer structure while ending each final user-facing reply with `喵`.",
+  "descriptionI18n": {
+    "zh": "Meow Agent Style 提供一个小型 Locus Skill：/meow-agent-style。启用后，agent 会保持用户要求的语言与正常回答结构，并让最终可见回复以「喵」结尾。",
+    "en": "Meow Agent Style provides a small Locus Skill, /meow-agent-style, that preserves the user's requested language and normal answer structure while ending each final user-facing reply with `喵`."
+  },
+  "descriptionSource": {
+    "type": "github",
+    "path": "README.md"
+  },
+  "repo": "r1n7aro/meow-agent-style",
+  "license": "MIT",
+  "downloadSource": {
+    "type": "latestRelease",
+    "repo": "r1n7aro/meow-agent-style",
+    "assetPattern": "meow-agent-style-*.zip"
+  }
+}
