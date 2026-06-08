@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "bucket": "d7",
+  "plugins": [
+    {
+      "id": "bye-bye-view",
+      "name": "Bye Bye View",
+      "summary": "A tiny Bye Bye panel for Locus View plugin publishing tests.",
+      "tags": [
+        "view",
+        "sample"
+      ],
+      "latestVersion": "0.1.0",
+      "updatedAt": "2026-06-08T20:18:45Z",
+      "compatibility": {
+        "projectIndependent": true
+      }
+    }
+  ]
+}

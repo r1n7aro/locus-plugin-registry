@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "registryVersion": 1,
-  "generatedAt": "2026-06-08T19:30:41Z",
-  "entryCount": 4,
+  "generatedAt": "2026-06-08T20:20:58Z",
+  "entryCount": 5,
   "bucketStrategy": "sha256-id-prefix-2",
   "bucketCount": 256,
   "entryBasePath": "plugins",
@@ -12,6 +12,7 @@
     "87",
     "bf",
     "c0",
+    "d7",
     "e1"
   ],
   "shards": {
@@ -26,6 +27,10 @@
     "c0": {
       "count": 1,
       "sha256": "ff0a1f5a48b6256454651436983af11e3fa7ffff2380efbe797d8deb4e203bf4"
+    },
+    "d7": {
+      "count": 1,
+      "sha256": "38326efd79c14309bb9eae212683c87f7adab1c6cca182a8737b920f076460b2"
     },
     "e1": {
       "count": 1,

@@ -1,0 +1,43 @@
+{
+  "schema": "locus.registry.plugin.v1",
+  "id": "bye-bye-view",
+  "name": "Bye Bye View",
+  "summary": "A tiny Bye Bye panel for Locus View plugin publishing tests.",
+  "description": "Bye Bye View provides a compact Locus View that displays a simple goodbye panel. It is intended as a minimal plugin publishing and registry validation sample.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "homepage": "https://github.com/r1n7aro/bye-bye-view",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/r1n7aro/bye-bye-view"
+  },
+  "tags": [
+    "view",
+    "sample"
+  ],
+  "components": {
+    "views": [
+      "bye-bye"
+    ],
+    "skills": []
+  },
+  "compatibility": {
+    "projectIndependent": true
+  },
+  "dependencies": {
+    "project": []
+  },
+  "downloadSource": {
+    "type": "latestRelease",
+    "repo": "r1n7aro/bye-bye-view",
+    "assetPattern": "bye-bye-view-*.zip",
+    "version": "0.1.0"
+  },
+  "latestVersion": "0.1.0",
+  "updatedAt": "2026-06-08T20:18:45Z",
+  "download": {
+    "url": "https://github.com/r1n7aro/bye-bye-view/releases/download/v0.1.0/bye-bye-view-0.1.0.zip",
+    "sha256": "a4a846c1a894d9c0a8ccd7d71575fe00d911d4bc3577c366496737a6fd511d7d",
+    "sizeBytes": 2276
+  }
+}
