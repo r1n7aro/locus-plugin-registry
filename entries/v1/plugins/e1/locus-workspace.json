@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "locus-workspace",
+  "name": "Locus Workspace",
+  "summary": "Canvas workspace for organizing Unity assets and scene references inside Locus.",
+  "summaryI18n": {
+    "zh": "用于在 Locus 中整理 Unity 资产和场景引用的画布工作区。",
+    "en": "Canvas workspace for organizing Unity assets and scene references inside Locus."
+  },
+  "author": "r1n7aro",
+  "tags": [
+    "workspace",
+    "unity",
+    "assets",
+    "view"
+  ],
+  "icon": {
+    "type": "locus",
+    "id": "Grid2X2"
+  },
+  "compatibility": {
+    "projectIndependent": true,
+    "minLocusVersion": "0.3.2"
+  },
+  "stats": [
+    {
+      "id": "githubStars",
+      "label": "Stars",
+      "value": 0
+    },
+    {
+      "id": "releaseDownloads",
+      "label": "Release downloads",
+      "value": 0
+    }
+  ],
+  "description": "Locus Workspace provides a canvas View for arranging Unity assets and scene references into pages. Drag assets from Unity into the canvas, search project assets from the View, and select or inspect saved references from Locus.",
+  "descriptionI18n": {
+    "zh": "Locus Workspace 提供一个画布 View，用于把 Unity 资产和场景引用按页面整理。可以从 Unity 拖入资产，在 View 内搜索项目资产，并从 Locus 选择或检查已保存的引用。",
+    "en": "Locus Workspace provides a canvas View for arranging Unity assets and scene references into pages. Drag assets from Unity into the canvas, search project assets from the View, and select or inspect saved references from Locus."
+  },
+  "descriptionSource": {
+    "type": "github",
+    "path": "README.md"
+  },
+  "repo": "r1n7aro/locus-workspace",
+  "license": "MIT",
+  "downloadSource": {
+    "type": "latestRelease",
+    "repo": "r1n7aro/locus-workspace",
+    "assetPattern": "locus-workspace-*.zip"
+  }
+}
