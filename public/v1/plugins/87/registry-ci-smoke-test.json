@@ -14,7 +14,7 @@
     "smoke-test"
   ],
   "latestVersion": "0.0.1",
-  "updatedAt": "2026-06-08T18:12:17Z",
+  "updatedAt": "2026-06-08T18:10:44Z",
   "icon": {
     "type": "locus",
     "id": "PackageCheck"
@@ -54,6 +54,7 @@
   "downloadSource": {
     "type": "latestRelease",
     "repo": "r1n7aro/locus-plugin-test-registry-ci",
-    "asset": "registry-ci-smoke-test.zip"
+    "asset": "registry-ci-smoke-test.zip",
+    "version": "0.0.1"
   }
 }

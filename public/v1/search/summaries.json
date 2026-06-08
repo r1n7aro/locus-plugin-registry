@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-08T18:24:16Z",
+  "generatedAt": "2026-06-08T19:14:40Z",
   "plugins": [
     {
       "id": "asset-browser-tools",
@@ -18,7 +18,7 @@
         "import-test"
       ],
       "latestVersion": "0.1.2",
-      "updatedAt": "2026-06-08T18:21:11Z",
+      "updatedAt": "2026-06-08T18:19:23Z",
       "icon": {
         "type": "locus",
         "id": "ScanSearch"
@@ -55,7 +55,7 @@
         "smoke-test"
       ],
       "latestVersion": "0.0.1",
-      "updatedAt": "2026-06-08T18:12:17Z",
+      "updatedAt": "2026-06-08T18:10:44Z",
       "icon": {
         "type": "locus",
         "id": "PackageCheck"
@@ -92,7 +92,7 @@
         "automation"
       ],
       "latestVersion": "0.1.1",
-      "updatedAt": "2026-06-08T18:23:28Z",
+      "updatedAt": "2026-06-08T18:19:23Z",
       "icon": {
         "type": "url",
         "url": "https://raw.githubusercontent.com/r1n7aro/locus-plugin-test-workflow-tools/main/icon.svg"

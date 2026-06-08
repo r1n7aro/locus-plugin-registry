@@ -15,7 +15,7 @@
     "import-test"
   ],
   "latestVersion": "0.1.2",
-  "updatedAt": "2026-06-08T18:21:11Z",
+  "updatedAt": "2026-06-08T18:19:23Z",
   "icon": {
     "type": "locus",
     "id": "ScanSearch"
@@ -65,6 +65,7 @@
   "downloadSource": {
     "type": "latestRelease",
     "repo": "r1n7aro/locus-plugin-test-asset-browser",
-    "asset": "asset-browser-tools.zip"
+    "asset": "asset-browser-tools.zip",
+    "version": "0.1.2"
   }
 }
