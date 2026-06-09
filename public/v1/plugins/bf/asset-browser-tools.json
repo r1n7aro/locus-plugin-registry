@@ -31,7 +31,7 @@
     {
       "id": "releaseDownloads",
       "label": "Release downloads",
-      "value": 35
+      "value": 39
     }
   ],
   "description": "Plugin import test entry with a Hello View and PSD Parser Skill. It can be installed from the registry, a release archive, or directly from the repository link.",

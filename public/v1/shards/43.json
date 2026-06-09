@@ -5,19 +5,19 @@
     {
       "id": "meow-agent-style",
       "name": "Meow Agent Style",
-      "summary": "Make the agent end final user-facing replies with `喵`.",
+      "summary": "Make the agent end every natural-language sentence in final replies with `喵`.",
       "summaryI18n": {
-        "zh": "让 agent 的最终可见回复以「喵」结尾。",
-        "en": "Make the agent end final user-facing replies with `喵`."
+        "zh": "让 agent 的最终可见回复每句话都以「喵」结尾。",
+        "en": "Make the agent end every natural-language sentence in final replies with `喵`."
       },
       "author": "r1n7aro",
       "tags": [
-        "skill",
+        "rule",
         "agent-style",
         "fun"
       ],
-      "latestVersion": "0.1.0",
-      "updatedAt": "2026-06-08T21:26:26Z",
+      "latestVersion": "0.1.1",
+      "updatedAt": "2026-06-09T02:48:01Z",
       "icon": {
         "type": "locus",
         "id": "Cat"
@@ -35,7 +35,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 2
+          "value": 8
         }
       ]
     }

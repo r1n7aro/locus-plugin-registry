@@ -31,7 +31,7 @@
     {
       "id": "releaseDownloads",
       "label": "Release downloads",
-      "value": 16
+      "value": 20
     }
   ],
   "description": "Locus Workspace provides a canvas View for arranging Unity assets and scene references into pages. Drag assets from Unity into the canvas, search project assets from the View, and select or inspect saved references from Locus.",
