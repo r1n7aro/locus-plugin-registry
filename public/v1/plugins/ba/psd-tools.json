@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "psd-tools",
+  "name": "PSD Tools",
+  "author": "r1n7aro",
+  "repo": "r1n7aro/locus-psd-tools",
+  "license": "MIT",
+  "summary": "PSD/PSB workflow Skill for inspecting, exporting, modifying, and rasterizing Photoshop files with Python.",
+  "description": "Adds the `/psd` Locus Skill for Photoshop PSD/PSB workflows. It provides Python helper scripts and a JSON adapter for inspecting layer trees, exporting composites or layers, editing safe layer properties, adding generated PNGs as pixel layers, creating PSDs from images, and validating outputs with psd-tools and Pillow.",
+  "tags": [
+    "psd",
+    "photoshop",
+    "image",
+    "python",
+    "skill"
+  ],
+  "compatibility": {
+    "projectIndependent": true
+  },
+  "dependencies": {
+    "project": [],
+    "runtime": [
+      {
+        "kind": "pythonPackage",
+        "name": "psd-tools[composite]",
+        "notes": "Required for PSD/PSB parsing, compositing, and layer operations. Installed only with user approval."
+      },
+      {
+        "kind": "pythonPackage",
+        "name": "Pillow",
+        "notes": "Required for raster image export and editing. Installed only with user approval."
+      }
+    ]
+  },
+  "downloadSource": {
+    "type": "latestRelease",
+    "repo": "r1n7aro/locus-psd-tools",
+    "assetPattern": "psd-tools-*.zip",
+    "version": "0.1.0"
+  },
+  "stats": [
+    {
+      "id": "githubStars",
+      "label": "Stars",
+      "value": 0
+    },
+    {
+      "id": "releaseDownloads",
+      "label": "Release downloads",
+      "value": 0
+    }
+  ],
+  "latestVersion": "0.1.0",
+  "updatedAt": "2026-06-10T18:44:16Z",
+  "download": {
+    "url": "https://github.com/r1n7aro/locus-psd-tools/releases/download/v0.1.0/psd-tools-0.1.0.zip",
+    "sha256": "70c617914c24053f0fdda223e78566914739ead56b6e3b75c3abfa4cef1aa262",
+    "sizeBytes": 9698
+  }
+}
