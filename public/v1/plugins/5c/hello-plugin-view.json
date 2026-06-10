@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "hello-plugin-view",
+  "name": "Hello Plugin View",
+  "author": "r1n7aro",
+  "repo": "r1n7aro/hello-plugin-view",
+  "license": "MIT",
+  "summary": "A minimal Hello Plugin View for Locus.",
+  "description": "Hello Plugin View provides a simple standalone Locus View packaged as an installable plugin. It opens without requiring a Unity connection and displays a ready-state panel for verifying plugin View installation.",
+  "tags": [
+    "view",
+    "example",
+    "hello"
+  ],
+  "compatibility": {
+    "projectIndependent": true
+  },
+  "dependencies": {
+    "project": []
+  },
+  "downloadSource": {
+    "type": "latestRelease",
+    "repo": "r1n7aro/hello-plugin-view",
+    "assetPattern": "hello-plugin-view-*.zip",
+    "version": "0.1.0"
+  },
+  "stats": [
+    {
+      "id": "githubStars",
+      "label": "Stars",
+      "value": 0
+    },
+    {
+      "id": "releaseDownloads",
+      "label": "Release downloads",
+      "value": 0
+    }
+  ],
+  "latestVersion": "0.1.0",
+  "updatedAt": "2026-06-10T19:07:47Z",
+  "download": {
+    "url": "https://github.com/r1n7aro/hello-plugin-view/releases/download/v0.1.0/hello-plugin-view-0.1.0.zip",
+    "sha256": "89f3ad0b3bff5d6ca5a76d072ab66ee8212a3294cbde59ddf2115e6b7b3e7367",
+    "sizeBytes": 3626
+  }
+}

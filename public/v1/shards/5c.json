@@ -1,21 +1,19 @@
 {
   "schemaVersion": 1,
-  "bucket": "ba",
+  "bucket": "5c",
   "plugins": [
     {
-      "id": "psd-tools",
-      "name": "PSD Tools",
-      "summary": "PSD/PSB workflow Skill for inspecting, exporting, modifying, and rasterizing Photoshop files with Python.",
+      "id": "hello-plugin-view",
+      "name": "Hello Plugin View",
+      "summary": "A minimal Hello Plugin View for Locus.",
       "author": "r1n7aro",
       "tags": [
-        "psd",
-        "photoshop",
-        "image",
-        "python",
-        "skill"
+        "view",
+        "example",
+        "hello"
       ],
       "latestVersion": "0.1.0",
-      "updatedAt": "2026-06-10T18:44:16Z",
+      "updatedAt": "2026-06-10T19:07:47Z",
       "compatibility": {
         "projectIndependent": true
       },
@@ -28,7 +26,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 5
+          "value": 0
         }
       ]
     }
