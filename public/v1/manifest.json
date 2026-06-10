@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "registryVersion": 1,
-  "generatedAt": "2026-06-09T13:52:35Z",
-  "entryCount": 6,
+  "generatedAt": "2026-06-10T08:22:40Z",
+  "entryCount": 7,
   "bucketStrategy": "sha256-id-prefix-2",
   "bucketCount": 256,
   "entryBasePath": "plugins",
@@ -10,6 +10,7 @@
   "searchIndexPath": "search/summaries.json",
   "availableBuckets": [
     "43",
+    "55",
     "87",
     "bf",
     "c0",
@@ -19,27 +20,31 @@
   "shards": {
     "43": {
       "count": 1,
-      "sha256": "3dc76e94d52f05e7562c9274eacdfb9f85321d7e414f56109355340c846e4736"
+      "sha256": "579aa536995b14fec9826f3fc2a5df2605771ddbf45809fb7f3f5c9ca43de024"
+    },
+    "55": {
+      "count": 1,
+      "sha256": "93c8a6e5b94776ed1b1b9e1bee57b554003e002a6a108100a37c857dd02681a8"
     },
     "87": {
       "count": 1,
-      "sha256": "0254e67ca9dcdb5ccae2e491b57cadcdf00a0da9c0726eb21c5052e7b8031c52"
+      "sha256": "7d8b6ac5773f4efec0dcfe3a06698fabb43a560111f332973f96f48665c82b0f"
     },
     "bf": {
       "count": 1,
-      "sha256": "7d089488987d8b9e138e482ad6e29f0654975368086beb3ee8961eaf43e3c27c"
+      "sha256": "4da37274cceac0022ec48b29584f934caac84729487911341f62a9c4fb15d655"
     },
     "c0": {
       "count": 1,
-      "sha256": "529a3e00d324ae3ade2322dfbede1375c1dbd6b1745dae00380d1154a10b02d0"
+      "sha256": "1a2b2fedac74bc6130efb757eb98263eb0b5ab362eb586fb9629e053adc38a9e"
     },
     "d7": {
       "count": 1,
-      "sha256": "d0d5c476a666d471f935cab1e76015d28110a9585350cc08175b6dac97a16b1e"
+      "sha256": "42d8f38334b95ee818d597ca6b27b467ed325b9418368f0578e4c1c8ea9d650c"
     },
     "e1": {
       "count": 1,
-      "sha256": "53252ecbe04769658be223655fdb8938dd157538135f64a4ce1dfeb3fa0629c9"
+      "sha256": "1e6238326449f742dc3c6aeebad10531c31c894b6128d82d5ba5ef98974ac6ee"
     }
   }
 }

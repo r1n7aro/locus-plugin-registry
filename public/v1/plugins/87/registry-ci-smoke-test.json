@@ -30,7 +30,7 @@
     {
       "id": "releaseDownloads",
       "label": "Release downloads",
-      "value": 31
+      "value": 33
     }
   ],
   "description": "Smoke test plugin for validating the Locus registry source-entry PR workflow, release archive verification, and generated public manifest, shard, entry, and search indexes.",

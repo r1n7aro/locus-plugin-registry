@@ -30,7 +30,7 @@
     {
       "id": "releaseDownloads",
       "label": "Release downloads",
-      "value": 8
+      "value": 13
     }
   ],
   "description": "Meow Agent Style provides a small Locus Rule that can be enabled for an agent. The rule asks the agent to preserve the useful content of the answer while ending every natural-language sentence in final user-facing replies with `喵`.",

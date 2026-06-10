@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-09T13:52:35Z",
+  "generatedAt": "2026-06-10T08:22:40Z",
   "plugins": [
     {
       "id": "asset-browser-tools",
@@ -36,7 +36,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 39
+          "value": 41
         }
       ]
     },
@@ -72,7 +72,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 12
+          "value": 14
         }
       ]
     },
@@ -110,7 +110,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 20
+          "value": 22
         }
       ]
     },
@@ -147,7 +147,46 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 8
+          "value": 13
+        }
+      ]
+    },
+    {
+      "id": "psd-to-ugui",
+      "name": "PSD To UGUI",
+      "summary": "Parse Photoshop PSD files for Unity UI workflows and UGUI prefab conversion.",
+      "summaryI18n": {
+        "zh": "解析 Photoshop PSD，用于 Unity UI 工作流和 UGUI Prefab 转换。",
+        "en": "Parse Photoshop PSD files for Unity UI workflows and UGUI prefab conversion."
+      },
+      "author": "aYiYiiii",
+      "tags": [
+        "skill",
+        "unity",
+        "ui",
+        "psd",
+        "ugui"
+      ],
+      "latestVersion": "0.2.0",
+      "updatedAt": "2026-06-10T08:18:02Z",
+      "icon": {
+        "type": "locus",
+        "id": "Layers"
+      },
+      "compatibility": {
+        "projectIndependent": true,
+        "minLocusVersion": "0.3.2"
+      },
+      "stats": [
+        {
+          "id": "githubStars",
+          "label": "Stars",
+          "value": 0
+        },
+        {
+          "id": "releaseDownloads",
+          "label": "Release downloads",
+          "value": 0
         }
       ]
     },
@@ -184,7 +223,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 31
+          "value": 33
         }
       ]
     },
@@ -221,7 +260,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 36
+          "value": 38
         }
       ]
     }
