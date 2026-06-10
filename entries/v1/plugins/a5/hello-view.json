@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "hello-view",
+  "name": "Hello View",
+  "summary": "A minimal Hello View for Locus.",
+  "summaryI18n": {
+    "en": "A minimal Hello View for Locus.",
+    "zh": "一个最小化的 Locus Hello View。"
+  },
+  "author": "r1n7aro",
+  "tags": [
+    "view",
+    "example",
+    "test"
+  ],
+  "icon": {
+    "type": "locus",
+    "id": "View"
+  },
+  "compatibility": {
+    "projectIndependent": true,
+    "minLocusVersion": "0.3.2"
+  },
+  "stats": [
+    {
+      "id": "githubStars",
+      "label": "Stars",
+      "value": 0
+    },
+    {
+      "id": "releaseDownloads",
+      "label": "Release downloads",
+      "value": 0
+    }
+  ],
+  "description": "Hello View is a minimal Locus View plugin that displays a simple ready status panel. It is intended as a lightweight registry test package.",
+  "descriptionI18n": {
+    "en": "Hello View is a minimal Locus View plugin that displays a simple ready status panel. It is intended as a lightweight registry test package.",
+    "zh": "Hello View 是一个最小化的 Locus View 插件，用于显示简单的就绪状态面板，作为轻量级注册表测试包。"
+  },
+  "descriptionSource": {
+    "type": "github",
+    "path": "README.md"
+  },
+  "repo": "r1n7aro/hello-view",
+  "license": "MIT",
+  "downloadSource": {
+    "type": "latestRelease",
+    "repo": "r1n7aro/hello-view",
+    "assetPattern": "hello-view-*.zip"
+  }
+}
