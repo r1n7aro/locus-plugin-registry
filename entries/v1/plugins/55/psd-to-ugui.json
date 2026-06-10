@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "psd-to-ugui",
+  "name": "PSD To UGUI",
+  "summary": "Parse Photoshop PSD files for Unity UI workflows and UGUI prefab conversion.",
+  "summaryI18n": {
+    "zh": "解析 Photoshop PSD，用于 Unity UI 工作流和 UGUI Prefab 转换。",
+    "en": "Parse Photoshop PSD files for Unity UI workflows and UGUI prefab conversion."
+  },
+  "author": "aYiYiiii",
+  "tags": [
+    "skill",
+    "unity",
+    "ui",
+    "psd",
+    "ugui"
+  ],
+  "icon": {
+    "type": "locus",
+    "id": "Layers"
+  },
+  "compatibility": {
+    "projectIndependent": true,
+    "minLocusVersion": "0.3.2"
+  },
+  "stats": [
+    {
+      "id": "githubStars",
+      "label": "Stars",
+      "value": 0
+    },
+    {
+      "id": "releaseDownloads",
+      "label": "Release downloads",
+      "value": 0
+    }
+  ],
+  "description": "PSD To UGUI provides a Locus Skill for inspecting PSD layer trees, exporting flattened previews or visible layers/groups as PNG files, generating layout manifests, and guiding Unity UGUI prefab conversion workflows.",
+  "descriptionI18n": {
+    "zh": "PSD To UGUI 提供一个 Locus Skill，可检查 PSD 图层树，导出合成预览或可见图层/组 PNG，生成布局清单，并辅助 Unity UGUI Prefab 转换流程。",
+    "en": "PSD To UGUI provides a Locus Skill for inspecting PSD layer trees, exporting flattened previews or visible layers/groups as PNG files, generating layout manifests, and guiding Unity UGUI prefab conversion workflows."
+  },
+  "descriptionSource": {
+    "type": "github",
+    "path": "README.md"
+  },
+  "repo": "aYiYiiii/psd-to-ugui",
+  "license": "MIT",
+  "downloadSource": {
+    "type": "latestRelease",
+    "repo": "aYiYiiii/psd-to-ugui",
+    "assetPattern": "psd-to-ugui-*.zip"
+  }
+}
