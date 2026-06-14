@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "bucket": "96",
+  "plugins": [
+    {
+      "id": "locus-ralph-loop",
+      "name": "Locus Ralph Loop",
+      "summary": "A Locus plugin prototype for running a Ralph-style goal loop from a view, skill, and guardrail rule.",
+      "author": "JupiterTheWarlock",
+      "tags": [
+        "loop",
+        "goal",
+        "ralph",
+        "automation",
+        "view",
+        "skill"
+      ],
+      "latestVersion": "0.1.4",
+      "updatedAt": "2026-06-12T13:26:34Z",
+      "compatibility": {
+        "projectIndependent": true
+      },
+      "stats": [
+        {
+          "id": "githubStars",
+          "label": "Stars",
+          "value": 0
+        },
+        {
+          "id": "releaseDownloads",
+          "label": "Release downloads",
+          "value": 59
+        }
+      ]
+    }
+  ]
+}

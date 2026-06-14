@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "id": "locus-ralph-loop",
+  "name": "Locus Ralph Loop",
+  "author": "JupiterTheWarlock",
+  "repo": "JupiterTheWarlock/locus-ralph-loop",
+  "license": "MIT",
+  "summary": "A Locus plugin prototype for running a Ralph-style goal loop from a view, skill, and guardrail rule.",
+  "description": "Locus Ralph Loop packages a standalone Locus View, a Skill, and a guardrail Rule for experimenting with an external Ralph-style loop around Locus workflows. It is intended as a project-independent prototype for goal-loop orchestration research.",
+  "tags": [
+    "loop",
+    "goal",
+    "ralph",
+    "automation",
+    "view",
+    "skill"
+  ],
+  "compatibility": {
+    "projectIndependent": true
+  },
+  "dependencies": {
+    "project": []
+  },
+  "downloadSource": {
+    "type": "latestRelease",
+    "repo": "JupiterTheWarlock/locus-ralph-loop",
+    "assetPattern": "locus-ralph-loop-*.zip",
+    "version": "0.1.4"
+  },
+  "stats": [
+    {
+      "id": "githubStars",
+      "label": "Stars",
+      "value": 0
+    },
+    {
+      "id": "releaseDownloads",
+      "label": "Release downloads",
+      "value": 59
+    }
+  ],
+  "latestVersion": "0.1.4",
+  "updatedAt": "2026-06-12T13:26:34Z",
+  "download": {
+    "url": "https://github.com/JupiterTheWarlock/locus-ralph-loop/releases/download/v0.1.4/locus-ralph-loop-0.1.4.zip",
+    "sha256": "21c12a7805740e07b6bc0c73306d13664a7e39621ac93b788f4be1ee53d058c6",
+    "sizeBytes": 15208
+  }
+}
