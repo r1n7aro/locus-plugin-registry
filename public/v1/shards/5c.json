@@ -21,12 +21,12 @@
         {
           "id": "githubStars",
           "label": "Stars",
-          "value": 0
+          "value": 1
         },
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 237
+          "value": 239
         }
       ]
     }

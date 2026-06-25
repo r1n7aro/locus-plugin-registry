@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-24T23:34:20Z",
+  "generatedAt": "2026-06-25T08:31:37Z",
   "plugins": [
     {
       "id": "hello-plugin-view",
@@ -21,12 +21,12 @@
         {
           "id": "githubStars",
           "label": "Stars",
-          "value": 0
+          "value": 1
         },
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 237
+          "value": 239
         }
       ]
     },
@@ -52,12 +52,12 @@
         {
           "id": "githubStars",
           "label": "Stars",
-          "value": 0
+          "value": 1
         },
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 360
+          "value": 366
         }
       ]
     },
@@ -82,12 +82,12 @@
         {
           "id": "githubStars",
           "label": "Stars",
-          "value": 0
+          "value": 1
         },
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 242
+          "value": 244
         }
       ]
     }

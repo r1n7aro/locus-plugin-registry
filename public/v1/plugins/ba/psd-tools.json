@@ -42,12 +42,12 @@
     {
       "id": "githubStars",
       "label": "Stars",
-      "value": 0
+      "value": 1
     },
     {
       "id": "releaseDownloads",
       "label": "Release downloads",
-      "value": 242
+      "value": 244
     }
   ],
   "latestVersion": "0.1.0",
