@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T10:46:02Z",
+  "generatedAt": "2026-07-19T12:06:35Z",
   "plugins": [
     {
       "id": "hello-plugin-view",
@@ -26,7 +26,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 729
+          "value": 731
         }
       ]
     },
@@ -57,7 +57,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 1215
+          "value": 1218
         }
       ]
     },
@@ -87,7 +87,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 734
+          "value": 736
         }
       ]
     }
