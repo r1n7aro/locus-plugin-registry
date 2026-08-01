@@ -33,7 +33,7 @@
     {
       "id": "releaseDownloads",
       "label": "Release downloads",
-      "value": 1000
+      "value": 1002
     }
   ],
   "latestVersion": "0.1.0",
