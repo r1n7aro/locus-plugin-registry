@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-06T10:38:59Z",
+  "generatedAt": "2026-11-06T10:42:45Z",
   "plugins": [
     {
       "id": "hello-plugin-view",
@@ -58,6 +58,42 @@
           "id": "releaseDownloads",
           "label": "Release downloads",
           "value": 4117
+        }
+      ]
+    },
+    {
+      "id": "openai-image",
+      "name": "OpenAI Image",
+      "summary": "Generate and edit images with OpenAI from Locus: tools for the model, a chat input status icon and the Image Studio view. Pay with your API key or your Codex subscription.",
+      "summaryI18n": {
+        "en": "Generate and edit images with OpenAI from Locus: tools for the model, a chat input status icon and the Image Studio view. Pay with your API key or your Codex subscription.",
+        "zh": "在 Locus 中用 OpenAI 生成和编辑图片：为模型提供工具，另有输入栏状态图标和 Image Studio View。可以用自己的 API Key，也可以使用 Codex 订阅额度。"
+      },
+      "author": "r1n7aro",
+      "tags": [
+        "image",
+        "openai",
+        "image-generation",
+        "codex",
+        "tools",
+        "view"
+      ],
+      "latestVersion": "0.2.0",
+      "updatedAt": "2026-11-06T10:41:35Z",
+      "compatibility": {
+        "projectIndependent": true,
+        "locus": ">=0.9.3 <0.11.0"
+      },
+      "stats": [
+        {
+          "id": "githubStars",
+          "label": "Stars",
+          "value": 0
+        },
+        {
+          "id": "releaseDownloads",
+          "label": "Release downloads",
+          "value": 0
         }
       ]
     },
