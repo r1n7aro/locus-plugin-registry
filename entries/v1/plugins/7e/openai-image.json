@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "id": "openai-image",
+  "name": "OpenAI Image",
+  "author": "r1n7aro",
+  "repo": "r1n7aro/locus-openai-image",
+  "license": "MIT",
+  "summary": "Generate and edit images with OpenAI from Locus: tools for the model, a chat input status icon and the Image Studio view. Pay with your API key or your Codex subscription.",
+  "summaryI18n": {
+    "en": "Generate and edit images with OpenAI from Locus: tools for the model, a chat input status icon and the Image Studio view. Pay with your API key or your Codex subscription.",
+    "zh": "在 Locus 中用 OpenAI 生成和编辑图片：为模型提供工具，另有输入栏状态图标和 Image Studio View。可以用自己的 API Key，也可以使用 Codex 订阅额度。"
+  },
+  "description": "Adds the image_generate and image_edit tools for the model, a status icon in the chat input and the Image Studio view. Images and a history.jsonl are saved in the workspace output folder. Pay with your OpenAI API key (any image model, including the 2.5 / 2.6 Flare and Sunburst models, with size, quality, background and format options), or allow the plugin to use the image quota of your ChatGPT subscription through Codex on its settings page, where the server picks the model and size. The plugin is enabled per workspace and is off by default.",
+  "descriptionI18n": {
+    "en": "Adds the image_generate and image_edit tools for the model, a status icon in the chat input and the Image Studio view. Images and a history.jsonl are saved in the workspace output folder. Pay with your OpenAI API key (any image model, including the 2.5 / 2.6 Flare and Sunburst models, with size, quality, background and format options), or allow the plugin to use the image quota of your ChatGPT subscription through Codex on its settings page, where the server picks the model and size. The plugin is enabled per workspace and is off by default.",
+    "zh": "为模型提供 image_generate 和 image_edit 工具，在输入栏提供状态图标，另附 Image Studio View。图片和 history.jsonl 保存在工作区的输出目录。可以用自己的 OpenAI API Key（支持任意图像模型，包括 2.5 / 2.6 的 Flare 和 Sunburst，可选尺寸、质量、背景和格式），也可以在插件设置页授权使用 ChatGPT 订阅的 Codex 生图额度，此时模型和尺寸由服务端决定。插件按工作区启用，默认关闭。"
+  },
+  "descriptionSource": {
+    "type": "github",
+    "repo": "r1n7aro/locus-openai-image",
+    "branch": "main",
+    "path": "README.md"
+  },
+  "descriptionSourceI18n": {
+    "en": {
+      "type": "github",
+      "repo": "r1n7aro/locus-openai-image",
+      "branch": "main",
+      "path": "README.md"
+    },
+    "zh": {
+      "type": "github",
+      "repo": "r1n7aro/locus-openai-image",
+      "branch": "main",
+      "path": "README.zh.md"
+    }
+  },
+  "tags": [
+    "image",
+    "openai",
+    "image-generation",
+    "codex",
+    "tools",
+    "view"
+  ],
+  "compatibility": {
+    "projectIndependent": true
+  },
+  "dependencies": {
+    "project": []
+  },
+  "downloadSource": {
+    "type": "latestRelease",
+    "repo": "r1n7aro/locus-openai-image",
+    "assetPattern": "openai-image-*.zip"
+  },
+  "stats": [
+    {
+      "id": "githubStars",
+      "label": "Stars",
+      "value": 0
+    },
+    {
+      "id": "releaseDownloads",
+      "label": "Release downloads",
+      "value": 0
+    }
+  ]
+}
