@@ -5,13 +5,15 @@ Source entries live in entries/v1/plugins/<bucket>/<plugin-id>.json. Two
 public indexes are generated with the same layout (manifest.json, shards/,
 plugins/, search/summaries.json):
 
-- public/v1: plugins that Locus 0.9.3 and older can install, i.e. archives
-  whose locus.plugin.json uses no manifest v2 features (`schemaVersion` 2
-  or `contributes`). Its entries keep the original v1 shape.
-- public/v2: every plugin. Entries also carry `compatibility.locus`,
-  `manifestSchemaVersion` and `requiresManifestV2`, read from the archive.
+- public/v1: plugins whose archive's locus.plugin.json uses no manifest v2
+  features (`schemaVersion` 2 or `contributes`), for Locus 0.9.3 and older.
+  Its entries keep the original v1 shape.
+- public/v2: plugins that need manifest v2, for later Locus releases. Entries
+  also carry `compatibility.locus`, `manifestSchemaVersion` and
+  `requiresManifestV2`, read from the archive.
 
-The previous public index is the cache. A release asset whose URL and
+Each plugin is in exactly one index. The previous public index is the cache;
+a v1 entry stands for a plugin that needs no manifest v2. A release asset whose URL and
 SHA-256 digest (or, without a digest, size and release time) are unchanged
 is not downloaded again, so registry CI no longer counts towards release
 download numbers. Stars and release downloads refresh only with
@@ -267,17 +269,31 @@ def load_source_entries():
 
 
 def previous_entry(plugin_id: str):
-    """The last generated public entry and whether v1 listed it."""
+    """The last generated public entry and whether v1 listed it.
+
+    Once public/v2 exists, v1 is written by this script and lists only
+    plugins that need no manifest v2, so a v1 entry gets that manifest info
+    and serves as the cache. A v1 index from before the split (no v2 yet)
+    does not: its archives are read once.
+    """
     item_bucket = bucket(plugin_id)
     in_v1 = (PUBLIC_ROOT / "v1" / "plugins" / item_bucket / f"{plugin_id}.json").is_file()
     for version in ("v2", "v1"):
         path = PUBLIC_ROOT / version / "plugins" / item_bucket / f"{plugin_id}.json"
-        if path.is_file():
-            try:
-                return read_json(path), in_v1
-            except (OSError, ValueError):
-                return None, in_v1
+        if not path.is_file():
+            continue
+        try:
+            entry = read_json(path)
+        except (OSError, ValueError):
+            return None, in_v1
+        if version == "v1" and split_index_exists() and isinstance(entry, dict) and not has_manifest_info(entry):
+            entry = {**entry, "manifestSchemaVersion": 1, "requiresManifestV2": False}
+        return entry, in_v1
     return None, in_v1
+
+
+def split_index_exists() -> bool:
+    return (PUBLIC_ROOT / "v2" / "manifest.json").is_file()
 
 
 def has_manifest_info(entry) -> bool:
@@ -481,7 +497,7 @@ def v1_entry(entry):
 
 
 def resolve_entries(sources, refresh_stats: bool, strict_ids=None):
-    """Public v2 entries, the ids v1 lists, and one report row per plugin."""
+    """Public entries in the v2 shape, the ids v1 lists, and one report row per plugin."""
     strict_ids = set(strict_ids or [])
     resolved = []
     v1_ids = set()
@@ -642,7 +658,7 @@ def main(argv=None):
     changed = []
     if write_index([v1_entry(entry) for entry in entries if entry["id"] in v1_ids], PUBLIC_ROOT / "v1", 1):
         changed.append("v1")
-    if write_index(entries, PUBLIC_ROOT / "v2", 2):
+    if write_index([entry for entry in entries if entry["id"] not in v1_ids], PUBLIC_ROOT / "v2", 2):
         changed.append("v2")
     write_report(report, changed)
     return 0

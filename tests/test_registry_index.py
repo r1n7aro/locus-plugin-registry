@@ -124,13 +124,13 @@ class RegistryIndexTests(unittest.TestCase):
         with contextlib.redirect_stdout(io.StringIO()):
             return registry.main(list(args))
 
-    def test_classic_plugins_go_to_both_indexes_and_v1_keeps_its_shape(self):
+    def test_classic_plugins_are_only_in_v1_in_their_original_shape(self):
         self.github.publish("a/classic", "classic", "1.0.0")
         self.add_entry(source_entry("classic", "a/classic"))
         self.run_index()
 
         v1 = self.public("v1", "classic")
-        v2 = self.public("v2", "classic")
+        self.assertIsNone(self.public("v2", "classic"))
         self.assertEqual(v1["latestVersion"], "1.0.0")
         self.assertNotIn("manifestSchemaVersion", v1)
         self.assertNotIn("requiresManifestV2", v1)
@@ -139,12 +139,11 @@ class RegistryIndexTests(unittest.TestCase):
             list(v1)[-3:], ["latestVersion", "updatedAt", "download"],
             "generated fields follow the source fields as before",
         )
-        self.assertEqual(v2["manifestSchemaVersion"], 1)
-        self.assertFalse(v2["requiresManifestV2"])
-        self.assertEqual(v2["downloadSource"]["version"], "1.0.0")
+        self.assertEqual(v1["downloadSource"]["version"], "1.0.0")
         self.assertEqual(self.manifest("v1")["registryVersion"], 1)
         self.assertEqual(self.manifest("v2")["registryVersion"], 2)
         self.assertEqual(self.manifest("v1")["entryCount"], 1)
+        self.assertEqual(self.manifest("v2")["entryCount"], 0)
 
     def test_manifest_v2_plugins_are_only_in_v2_with_their_locus_range(self):
         self.github.publish("a/classic", "classic", "1.0.0")
@@ -158,14 +157,14 @@ class RegistryIndexTests(unittest.TestCase):
         self.assertIsNone(self.public("v1", "modern"))
         self.assertIsNone(self.public("v1", "contrib"))
         self.assertEqual(self.manifest("v1")["entryCount"], 1)
-        self.assertEqual(self.manifest("v2")["entryCount"], 3)
+        self.assertEqual(self.manifest("v2")["entryCount"], 2)
         modern = self.public("v2", "modern")
         self.assertTrue(modern["requiresManifestV2"])
         self.assertEqual(modern["manifestSchemaVersion"], 2)
         self.assertEqual(modern["compatibility"], {"projectIndependent": True, "locus": ">=0.9.4 <0.11.0"})
         summaries = registry.read_json(registry.PUBLIC_ROOT / "v2" / "search" / "summaries.json")["plugins"]
-        self.assertEqual([item["id"] for item in summaries], ["classic", "contrib", "modern"])
-        self.assertEqual(summaries[2]["compatibility"]["locus"], ">=0.9.4 <0.11.0")
+        self.assertEqual([item["id"] for item in summaries], ["contrib", "modern"])
+        self.assertEqual(summaries[1]["compatibility"]["locus"], ">=0.9.4 <0.11.0")
         v1_summaries = registry.read_json(registry.PUBLIC_ROOT / "v1" / "search" / "summaries.json")["plugins"]
         self.assertEqual([item["id"] for item in v1_summaries], ["classic"])
 
@@ -181,7 +180,7 @@ class RegistryIndexTests(unittest.TestCase):
         self.github.publish("a/classic", "classic", "1.1.0")
         self.run_index()
         self.assertEqual(len(self.github.downloads), 2)
-        self.assertEqual(self.public("v2", "classic")["latestVersion"], "1.1.0")
+        self.assertEqual(self.public("v1", "classic")["latestVersion"], "1.1.0")
 
     def test_assets_without_a_digest_compare_size_and_release_time(self):
         self.github.publish("a/classic", "classic", "1.0.0", digest=False)
@@ -200,7 +199,7 @@ class RegistryIndexTests(unittest.TestCase):
         self.github.releases["a/classic"]["assets"][0]["digest"] = "sha256:" + "0" * 64
         self.github.archives[url] = archive("classic", "1.0.1")
         self.run_index()
-        self.assertEqual(self.public("v2", "classic")["latestVersion"], "1.0.0")
+        self.assertEqual(self.public("v1", "classic")["latestVersion"], "1.0.0")
 
     def test_one_failing_plugin_keeps_its_entry_and_others_still_update(self):
         self.github.publish("a/one", "one", "1.0.0")
@@ -212,8 +211,8 @@ class RegistryIndexTests(unittest.TestCase):
         self.github.publish("a/two", "two", "2.0.0")
         self.run_index()
         self.assertEqual(self.public("v1", "one")["latestVersion"], "1.0.0")
-        self.assertEqual(self.public("v2", "one")["latestVersion"], "1.0.0")
-        self.assertEqual(self.public("v2", "two")["latestVersion"], "2.0.0")
+        self.assertIsNone(self.public("v2", "one"))
+        self.assertEqual(self.public("v1", "two")["latestVersion"], "2.0.0")
 
     def test_a_new_failing_plugin_is_skipped_but_strict_validation_fails(self):
         self.github.publish("a/one", "one", "1.0.0")
@@ -221,8 +220,9 @@ class RegistryIndexTests(unittest.TestCase):
         path = self.add_entry(source_entry("broken", "a/broken"))
         self.github.failing.add("a/broken")
         self.run_index()
+        self.assertIsNone(self.public("v1", "broken"))
         self.assertIsNone(self.public("v2", "broken"))
-        self.assertEqual(self.manifest("v2")["entryCount"], 1)
+        self.assertEqual(self.manifest("v1")["entryCount"], 1)
         with self.assertRaises(SystemExit) as raised:
             self.run_index("--validate-only", "--strict-entries", path.as_posix())
         self.assertIn("HTTP 404", str(raised.exception))
@@ -232,7 +232,7 @@ class RegistryIndexTests(unittest.TestCase):
         self.github.stars["a/classic"] = 5
         self.add_entry(source_entry("classic", "a/classic"))
         self.run_index()
-        stats = {stat["id"]: stat["value"] for stat in self.public("v2", "classic")["stats"]}
+        stats = {stat["id"]: stat["value"] for stat in self.public("v1", "classic")["stats"]}
         self.assertEqual(stats, {"githubStars": 5, "releaseDownloads": 7})
         self.assertEqual(len(self.github.stat_calls), 1)
 
@@ -260,6 +260,40 @@ class RegistryIndexTests(unittest.TestCase):
         self.run_index()
         self.assertEqual(len(self.github.downloads), 2)
         self.run_index()
+        self.assertEqual(len(self.github.downloads), 2)
+
+    def test_leaving_a_v2_index_that_listed_every_plugin_downloads_nothing(self):
+        self.github.publish("a/classic", "classic", "1.0.0")
+        self.add_entry(source_entry("classic", "a/classic"))
+        self.run_index()
+        # Earlier runs also listed classic plugins in v2.
+        listed = {**self.public("v1", "classic"), "manifestSchemaVersion": 1, "requiresManifestV2": False}
+        registry.build_index([listed], registry.PUBLIC_ROOT / "v2", 2, "2026-11-06T00:00:00Z")
+        self.run_index()
+        self.assertIsNone(self.public("v2", "classic"))
+        self.assertEqual(self.public("v1", "classic")["latestVersion"], "1.0.0")
+        self.run_index()
+        self.run_index("--refresh-stats")
+        self.assertEqual(len(self.github.downloads), 1, "the v1 entry is the cache")
+
+    def test_a_failing_classic_plugin_stays_in_v1(self):
+        self.github.publish("a/classic", "classic", "1.0.0")
+        self.add_entry(source_entry("classic", "a/classic"))
+        self.run_index()
+        self.github.failing.add("a/classic")
+        self.run_index()
+        self.assertEqual(self.public("v1", "classic")["latestVersion"], "1.0.0")
+        self.assertIsNone(self.public("v2", "classic"))
+
+    def test_a_plugin_that_starts_using_manifest_v2_moves_to_v2(self):
+        self.github.publish("a/grower", "grower", "1.0.0")
+        self.add_entry(source_entry("grower", "a/grower"))
+        self.run_index()
+        self.github.publish("a/grower", "grower", "2.0.0", schemaVersion=2, contributes={"tools": []})
+        self.run_index()
+        self.assertIsNone(self.public("v1", "grower"))
+        self.assertEqual(self.public("v2", "grower")["latestVersion"], "2.0.0")
+        self.assertEqual(self.manifest("v1")["entryCount"], 0)
         self.assertEqual(len(self.github.downloads), 2)
 
     def test_authoring_errors_stop_the_build(self):

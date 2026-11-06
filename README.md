@@ -8,8 +8,10 @@ Both indexes have the same layout: `manifest.json`, `shards/<bucket>.json`, `plu
 
 | Index | Read by | Contents |
 |---|---|---|
-| `public/v2` | Locus releases after 0.9.3 | Every plugin. Entries also carry `compatibility.locus` (the `locus.plugin.json` range), `manifestSchemaVersion` and `requiresManifestV2`. |
-| `public/v1` | Locus 0.9.3 and older | Plugins whose archive uses no plugin manifest v2 features (`schemaVersion` 2 or `contributes`), in the original entry shape. |
+| `public/v2` | Locus releases after 0.9.3 | Plugins whose archive uses plugin manifest v2 features (`schemaVersion` 2 or `contributes`). Entries also carry `compatibility.locus` (the `locus.plugin.json` range), `manifestSchemaVersion` and `requiresManifestV2`. |
+| `public/v1` | Locus 0.9.3 and older | The other plugins, in the original entry shape. |
+
+Each plugin is listed in exactly one index, so later Locus releases list only manifest v2 plugins. A plugin moves from v1 to v2 when a release starts using manifest v2 features.
 
 Base URLs:
 
