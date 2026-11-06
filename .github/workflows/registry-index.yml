@@ -4,7 +4,8 @@ on:
   pull_request:
     paths:
       - "entries/**"
-      - "scripts/registry_index.py"
+      - "scripts/**"
+      - "tests/**"
       - ".github/workflows/registry-index.yml"
   push:
     branches:
@@ -12,51 +13,86 @@ on:
       - test
     paths:
       - "entries/**"
-      - "scripts/registry_index.py"
+      - "scripts/**"
+      - "tests/**"
       - ".github/workflows/registry-index.yml"
   schedule:
+    # New releases: GitHub API only; archives are downloaded only when an asset changed.
     - cron: "17 * * * *"
+    # Stars and release download counts.
+    - cron: "47 3 * * *"
   workflow_dispatch:
+    inputs:
+      refresh_stats:
+        description: "Refresh stars and release download counts"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
 
+concurrency:
+  group: registry-index-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   validate:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Reject generated index edits in PR
-        if: github.event_name == 'pull_request'
+      - name: Reject generated index edits
         run: |
           git fetch origin "${{ github.base_ref }}" --depth=1
           changed="$(git diff --name-only "origin/${{ github.base_ref }}"...HEAD)"
           echo "$changed"
           if echo "$changed" | grep -E '^(public/|v1/)'; then
-            echo "Registration PRs must modify entries/ only; public/ is generated."
+            echo "Pull requests must modify entries/ only; public/ is generated."
             exit 1
           fi
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
       - name: Validate entries
-        run: python scripts/registry_index.py --validate-downloads --validate-only
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          changed="$(git diff --name-only --diff-filter=AM "origin/${{ github.base_ref }}"...HEAD -- entries/ | tr '\n' ' ')"
+          python scripts/registry_index.py --validate-only --strict-entries $changed
 
   build-index:
     if: github.event_name != 'pull_request'
-    needs: validate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
       - name: Build public index
-        run: python scripts/registry_index.py --validate-downloads
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SCHEDULE: ${{ github.event.schedule }}
+          REFRESH_STATS: ${{ inputs.refresh_stats }}
+        run: |
+          args=""
+          if [ "$SCHEDULE" = "47 3 * * *" ] || [ "$REFRESH_STATS" = "true" ]; then
+            args="--refresh-stats"
+          fi
+          python scripts/registry_index.py $args
       - name: Commit generated index
         run: |
-          if git diff --quiet -- public/v1; then
+          git add -A public
+          if git diff --cached --quiet; then
             echo "Generated index is up to date."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/v1
           git commit -m "Generate registry index"
-          git push
+          for attempt in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            git pull --rebase
+          done
+          exit 1
