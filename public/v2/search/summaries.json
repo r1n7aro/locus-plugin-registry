@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T11:06:35Z",
+  "generatedAt": "2026-11-09T12:08:41Z",
   "plugins": [
     {
       "id": "openai-image",
@@ -34,7 +34,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 9
+          "value": 22
         }
       ]
     }
