@@ -54,7 +54,7 @@
     "type": "latestRelease",
     "repo": "r1n7aro/locus-openai-image",
     "assetPattern": "openai-image-*.zip",
-    "version": "0.2.3"
+    "version": "0.2.4"
   },
   "stats": [
     {
@@ -68,12 +68,12 @@
       "value": 9
     }
   ],
-  "latestVersion": "0.2.3",
-  "updatedAt": "2026-11-09T10:53:05Z",
+  "latestVersion": "0.2.4",
+  "updatedAt": "2026-11-09T11:06:23Z",
   "download": {
-    "url": "https://github.com/r1n7aro/locus-openai-image/releases/download/v0.2.3/openai-image-0.2.3.zip",
-    "sha256": "b9e9f355a0a96b34062fc8c6c86019009bb14703c9098e4e56366094d7357ca7",
-    "sizeBytes": 44786
+    "url": "https://github.com/r1n7aro/locus-openai-image/releases/download/v0.2.4/openai-image-0.2.4.zip",
+    "sha256": "b7496b4733a074e2e59b00a6bab3cf5da0d00f474ac2d43747a8992875dd93a0",
+    "sizeBytes": 45493
   },
   "manifestSchemaVersion": 2,
   "requiresManifestV2": true
