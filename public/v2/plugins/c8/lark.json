@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "lark",
+  "name": "飞书 / Lark",
+  "author": "r1n7aro",
+  "repo": "r1n7aro/locus-lark",
+  "license": "MIT",
+  "summary": "Feishu / Lark for Locus scripts: sign in on the plugin's settings page, then read and write wiki pages, documents, sheets, bases, drive files, chats and messages through locus.lark in Python.",
+  "summaryI18n": {
+    "en": "Feishu / Lark for Locus scripts: sign in on the plugin's settings page, then read and write wiki pages, documents, sheets, bases, drive files, chats and messages through locus.lark in Python.",
+    "zh": "在 Locus 脚本中读写飞书 / Lark：在插件设置页登录后，通过 Python 的 locus.lark 访问知识库、云文档、电子表格、多维表格、云空间、群聊和消息。"
+  },
+  "description": "Adds locus.lark to the Locus Python SDK, an object-oriented async client for the Feishu / Lark Open Platform. It covers wiki spaces and pages; documents (Markdown read and write, block edits, images and files, version history); drive files with upload, download, import and export; comments, collaborators and link sharing; sheets; bases; and chats and messages (send, reply, recall, forward, reactions, pins, announcements, urgent notifications, members, create and disband chats). lark.api calls any other endpoint. Sign in on the plugin's Settings tab: create a personal app in your tenant in one step or enter an existing one, then confirm in Feishu. The app secret and refresh token stay in the system keychain; scripts get short-lived tokens and call the Open Platform directly. Nothing loads until used: one lazy tool, a one-line Skill summary, and httpx installed on first use. Needs Locus 0.9.4 or later.",
+  "descriptionI18n": {
+    "en": "Adds locus.lark to the Locus Python SDK, an object-oriented async client for the Feishu / Lark Open Platform. It covers wiki spaces and pages; documents (Markdown read and write, block edits, images and files, version history); drive files with upload, download, import and export; comments, collaborators and link sharing; sheets; bases; and chats and messages (send, reply, recall, forward, reactions, pins, announcements, urgent notifications, members, create and disband chats). lark.api calls any other endpoint. Sign in on the plugin's Settings tab: create a personal app in your tenant in one step or enter an existing one, then confirm in Feishu. The app secret and refresh token stay in the system keychain; scripts get short-lived tokens and call the Open Platform directly. Nothing loads until used: one lazy tool, a one-line Skill summary, and httpx installed on first use. Needs Locus 0.9.4 or later.",
+    "zh": "为 Locus Python SDK 增加 locus.lark：面向对象的飞书 / Lark 开放平台异步客户端。覆盖知识库空间与页面；云文档（Markdown 读写、块级编辑、插图和附件、历史版本）；云空间文件的上传、下载、导入和导出；评论、协作者与链接分享；电子表格；多维表格；群聊与消息（发送、回复、撤回、转发、表情回复、Pin、群公告、加急、成员管理、建群和解散群）。其他接口可用 lark.api 直接调用。在插件设置页登录：一键在租户中创建个人应用或填写已有应用，然后在飞书中确认。App Secret 和 refresh token 保存在系统钥匙串，脚本只拿到短期 token 并直接访问开放平台。安装后没有常驻开销：唯一的工具按需加载，Skill 只占一行摘要，httpx 首次使用时才安装。需要 Locus 0.9.4 或更高版本。"
+  },
+  "descriptionSource": {
+    "type": "github",
+    "repo": "r1n7aro/locus-lark",
+    "branch": "main",
+    "path": "README.md"
+  },
+  "descriptionSourceI18n": {
+    "en": {
+      "type": "github",
+      "repo": "r1n7aro/locus-lark",
+      "branch": "main",
+      "path": "README.md"
+    },
+    "zh": {
+      "type": "github",
+      "repo": "r1n7aro/locus-lark",
+      "branch": "main",
+      "path": "README.zh.md"
+    }
+  },
+  "tags": [
+    "feishu",
+    "lark",
+    "docs",
+    "wiki",
+    "messaging",
+    "python-sdk"
+  ],
+  "compatibility": {
+    "projectIndependent": true,
+    "locus": ">=0.9.4 <0.11.0"
+  },
+  "dependencies": {
+    "project": []
+  },
+  "downloadSource": {
+    "type": "latestRelease",
+    "repo": "r1n7aro/locus-lark",
+    "assetPattern": "lark-*.zip",
+    "version": "0.1.0"
+  },
+  "stats": [
+    {
+      "id": "githubStars",
+      "label": "Stars",
+      "value": 0
+    },
+    {
+      "id": "releaseDownloads",
+      "label": "Release downloads",
+      "value": 0
+    }
+  ],
+  "latestVersion": "0.1.0",
+  "updatedAt": "2026-11-13T12:02:47Z",
+  "download": {
+    "url": "https://github.com/r1n7aro/locus-lark/releases/download/v0.1.0/lark-0.1.0.zip",
+    "sha256": "612ef50dc77ff1248d0f8d882b9bc3fac743dac18e6cdbdfb85f83bc93680838",
+    "sizeBytes": 86083
+  },
+  "manifestSchemaVersion": 2,
+  "requiresManifestV2": true
+}

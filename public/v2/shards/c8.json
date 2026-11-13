@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "bucket": "c8",
+  "plugins": [
+    {
+      "id": "lark",
+      "name": "飞书 / Lark",
+      "summary": "Feishu / Lark for Locus scripts: sign in on the plugin's settings page, then read and write wiki pages, documents, sheets, bases, drive files, chats and messages through locus.lark in Python.",
+      "summaryI18n": {
+        "en": "Feishu / Lark for Locus scripts: sign in on the plugin's settings page, then read and write wiki pages, documents, sheets, bases, drive files, chats and messages through locus.lark in Python.",
+        "zh": "在 Locus 脚本中读写飞书 / Lark：在插件设置页登录后，通过 Python 的 locus.lark 访问知识库、云文档、电子表格、多维表格、云空间、群聊和消息。"
+      },
+      "author": "r1n7aro",
+      "tags": [
+        "feishu",
+        "lark",
+        "docs",
+        "wiki",
+        "messaging",
+        "python-sdk"
+      ],
+      "latestVersion": "0.1.0",
+      "updatedAt": "2026-11-13T12:02:47Z",
+      "compatibility": {
+        "projectIndependent": true,
+        "locus": ">=0.9.4 <0.11.0"
+      },
+      "stats": [
+        {
+          "id": "githubStars",
+          "label": "Stars",
+          "value": 0
+        },
+        {
+          "id": "releaseDownloads",
+          "label": "Release downloads",
+          "value": 0
+        }
+      ]
+    }
+  ]
+}

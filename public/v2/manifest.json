@@ -1,20 +1,25 @@
 {
   "schemaVersion": 1,
   "registryVersion": 2,
-  "generatedAt": "2026-11-11T11:27:03Z",
-  "entryCount": 1,
+  "generatedAt": "2026-11-13T12:04:07Z",
+  "entryCount": 2,
   "bucketStrategy": "sha256-id-prefix-2",
   "bucketCount": 256,
   "entryBasePath": "plugins",
   "summaryBasePath": "shards",
   "searchIndexPath": "search/summaries.json",
   "availableBuckets": [
-    "7e"
+    "7e",
+    "c8"
   ],
   "shards": {
     "7e": {
       "count": 1,
       "sha256": "e99bfabc48abcfed6a9a69da50824ee79024adbbdc2bd72f6b6ba5351217ca47"
+    },
+    "c8": {
+      "count": 1,
+      "sha256": "dd7f41e46121104d42629a5757d06f3b903afe0c3c5caf7fd876c69b676ed79a"
     }
   }
 }
