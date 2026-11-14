@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-13T12:04:07Z",
+  "generatedAt": "2026-11-14T10:55:57Z",
   "plugins": [
     {
       "id": "lark",
@@ -34,7 +34,7 @@
         {
           "id": "releaseDownloads",
           "label": "Release downloads",
-          "value": 0
+          "value": 3
         }
       ]
     },
